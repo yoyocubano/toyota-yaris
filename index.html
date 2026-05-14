@@ -32,7 +32,7 @@
         }
 
         .page {
-            background-color: #fdfbf7; /* Slightly warm off-white for premium paper feel */
+            background-color: #fdfbf7;
             color: #1a1a1a;
             overflow: hidden;
             display: flex;
@@ -50,19 +50,19 @@
             width: 20px;
             background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%);
             z-index: 10;
+            pointer-events: none;
         }
         .page:nth-child(even)::before { right: 0; background: linear-gradient(to left, rgba(0,0,0,0.15) 0%, transparent 100%); }
         .page:nth-child(odd)::before { left: 0; background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%); }
 
-        /* Page Hard Cover Style */
         .page.--hard {
             background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
             color: white;
-            border: solid 2px #d4af37; /* Gold border */
+            border: solid 2px #d4af37;
         }
 
         .page-content {
-            padding: 50px;
+            padding: 40px;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -70,26 +70,47 @@
             position: relative;
         }
 
-        /* Helpers */
-        .bg-image {
+        /* Image Helpers - Fixed bugs with cutoffs */
+        .img-contain {
             width: 100%;
-            height: 55%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #000; /* Letterboxing to blend with image edges */
+        }
+        
+        .img-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bg-image-half {
+            width: 100%;
+            height: 45%;
             background-size: cover;
             background-position: center;
-            position: relative;
             border-bottom: 2px solid #d4af37;
+        }
+
+        .bg-banner {
+            width: 100%;
+            height: 35%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #111;
         }
 
         .text-content {
             flex: 1;
-            padding: 30px 20px;
+            padding: 25px 20px;
         }
 
         h1 { 
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem; 
-            color: #d4af37; /* Metallic Gold */
-            margin-bottom: 15px; 
+            font-size: 3rem; 
+            color: #d4af37;
+            margin-bottom: 10px; 
             text-transform: uppercase; 
             letter-spacing: 4px;
             font-weight: 700;
@@ -97,48 +118,46 @@
         
         h2 { 
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem; 
+            font-size: 1.6rem; 
             color: #1a1a1a; 
-            margin-bottom: 20px; 
+            margin-bottom: 15px; 
             letter-spacing: 1px;
             border-bottom: 1px solid #d4af37;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             display: inline-block;
         }
         
         h3 { 
-            font-size: 0.9rem; 
-            margin-bottom: 15px; 
-            color: #888; 
+            font-size: 0.85rem; 
+            margin-bottom: 12px; 
+            color: #777; 
             text-transform: uppercase;
             letter-spacing: 2px;
         }
         
         p { 
-            font-size: 1rem; 
-            line-height: 1.8; 
-            margin-bottom: 20px; 
-            color: #444;
+            font-size: 0.95rem; 
+            line-height: 1.6; 
+            margin-bottom: 15px; 
+            color: #333;
             text-align: justify;
         }
 
-        /* Specific Page Styles */
+        /* Cover Styles */
         .cover {
             text-align: center;
             justify-content: center;
-            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(17,17,17,0.9)), url('assets/img2.png');
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(17,17,17,0.9)), url('assets/img2.png');
             background-size: cover;
             background-position: center;
         }
 
-        .cover h1 {
-            text-shadow: 0 5px 15px rgba(0,0,0,0.8);
-        }
+        .cover h1 { text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
 
         .cover .subtitle {
             font-family: 'Montserrat', sans-serif;
             color: #fff;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             letter-spacing: 3px;
             font-weight: 300;
             text-transform: uppercase;
@@ -151,89 +170,85 @@
             border: 1px solid #d4af37;
             padding: 10px 25px;
             font-weight: 300;
-            font-size: 0.9rem;
-            margin-top: 30px;
+            font-size: 0.85rem;
+            margin-top: 25px;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        .specs-list {
-            list-style: none;
-            margin-top: 30px;
-        }
-
+        /* List & Buttons */
+        .specs-list { list-style: none; margin-top: 20px; }
         .specs-list li {
-            padding: 15px 0;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(0,0,0,0.1);
-            font-size: 1rem;
+            font-size: 0.95rem;
             display: flex;
             justify-content: space-between;
         }
-
         .specs-list strong {
             color: #1a1a1a;
             font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .cta-box {
             background: #111;
-            padding: 30px;
+            padding: 25px;
             text-align: center;
-            margin-top: 30px;
+            margin-top: 25px;
             border: 1px solid #d4af37;
         }
 
         .cta-box h3 {
             color: #d4af37;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 10px;
             font-family: 'Playfair Display', serif;
         }
 
-        .cta-box p {
-            color: #ccc;
-            text-align: center;
-        }
+        .cta-box p { color: #ccc; text-align: center; margin-bottom: 5px; }
 
         .cta-box a {
             display: inline-block;
             background: #d4af37;
             color: #111;
             text-decoration: none;
-            padding: 15px 35px;
+            padding: 12px 30px;
             font-weight: 600;
             margin-top: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border-radius: 2px;
         }
         .cta-box a:hover { 
             background: #fff; 
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
 
         .legal-text {
-            font-size: 0.75rem;
-            color: #666;
-            line-height: 1.6;
-            margin-top: auto;
+            font-size: 0.7rem;
+            color: #888;
+            line-height: 1.5;
             text-align: justify;
             font-family: 'Helvetica', sans-serif;
+            background: #111;
+            padding: 20px;
+            border-top: 1px solid #333;
         }
 
-        /* Page numbers */
         .page-number {
             position: absolute;
-            bottom: 25px;
-            font-size: 0.9rem;
+            bottom: 20px;
+            font-size: 0.85rem;
             color: #d4af37;
             font-family: 'Playfair Display', serif;
             font-style: italic;
         }
-        .page:nth-child(even) .page-number { left: 30px; }
-        .page:nth-child(odd) .page-number { right: 30px; }
+        .page:nth-child(even) .page-number { left: 25px; }
+        .page:nth-child(odd) .page-number { right: 25px; }
 
     </style>
 </head>
@@ -241,7 +256,7 @@
 
     <div class="flip-book" id="flipbook">
         
-        <!-- COVER -->
+        <!-- PAGE 1: COVER -->
         <div class="page --hard">
             <div class="page-content cover">
                 <h1>TOYOTA YARIS</h1>
@@ -250,75 +265,96 @@
             </div>
         </div>
 
-        <!-- PAGE 1: Economy Banner (Image 1) -->
-        <div class="page">
-            <div class="bg-image" style="background-image: url('assets/img1.png'); background-color: #111; background-size: contain; background-repeat: no-repeat; border-bottom: none;"></div>
-            <div class="page-content text-content">
-                <h2>L'Économie à l'État Pur</h2>
-                <h3>Self-Charging Hybrid Technology</h3>
-                <p><strong>[FR]</strong> Marre de voir votre budget s'envoler à la pompe ? Grâce à sa motorisation hybride auto-rechargeable (sans besoin de brancher), cette Yaris excelle. Elle roule jusqu'à 50% du temps en mode électrique en milieu urbain. Le silence et l'économie redéfinis.</p>
-                <p><strong>[EN]</strong> Tired of seeing your budget vanish? Thanks to its self-charging hybrid engine, this Yaris rules the city. It drives up to 50% of the time in electric mode in urban environments. Pure efficiency.</p>
-            </div>
-            <div class="page-number">1</div>
+        <!-- PAGE 2: Full Infographic 1 (img5) -->
+        <div class="page" style="padding: 0; background: #000;">
+            <img src="assets/img5.png" class="img-contain" alt="Infographic Toyota Yaris" />
         </div>
 
-        <!-- PAGE 2: Peace of Mind & Interior (Image 4) -->
+        <!-- PAGE 3: Economy Banner + Text -->
+        <div class="page">
+            <div class="bg-banner" style="background-image: url('assets/img1.png');"></div>
+            <div class="page-content text-content">
+                <h2>L'Économie à l'État Pur</h2>
+                <h3>Technologie Hybride Auto-rechargeable</h3>
+                <p><strong>[FR]</strong> Oubliez les pleins coûteux. Grâce à sa motorisation hybride innovante, cette Yaris roule jusqu'à 50% du temps en mode 100% électrique lors de vos trajets urbains. Une conduite fluide, silencieuse, et incroyablement économique.</p>
+                <p><strong>[EN]</strong> Forget expensive refueling. Thanks to its innovative hybrid engine, this Yaris drives up to 50% of the time in 100% electric mode during urban trips. Smooth, silent, and incredibly economical.</p>
+            </div>
+            <div class="page-number">3</div>
+        </div>
+
+        <!-- PAGE 4: Premium Interior (img4) -->
         <div class="page">
             <div class="page-content text-content">
                 <h2>La Tranquillité d'Esprit</h2>
-                <h3>Safety & Premium Comfort</h3>
-                <p><strong>[FR]</strong> Toyota est mondialement reconnu pour une chose : sa fiabilité absolue. Équipée du pack <em>Toyota Safety Sense</em> (freinage d'urgence, maintien de voie), elle veille sur vous. L'intérieur vous accueille avec des matériaux premium et une connectivité Apple CarPlay totale.</p>
-                <p><strong>[EN]</strong> Toyota is globally renowned for reliability. Equipped with the <em>Toyota Safety Sense</em> pack, it watches over you. The interior welcomes you with premium materials and total connectivity.</p>
+                <h3>Sécurité & Confort Premium</h3>
+                <p><strong>[FR]</strong> Toyota est mondialement reconnu pour sa fiabilité absolue. Équipée de série du <em>Toyota Safety Sense</em> (freinage d'urgence, maintien de voie), elle veille sur vous en permanence. L'intérieur vous accueille avec des matériaux premium et une connectivité Apple CarPlay totale.</p>
             </div>
-            <div class="bg-image" style="background-image: url('assets/img4.png'); height: 45%; border-bottom: none; border-top: 2px solid #d4af37;"></div>
-            <div class="page-number">2</div>
+            <div class="bg-image-half" style="background-image: url('assets/img4.png'); border-bottom: none; border-top: 2px solid #d4af37;"></div>
+            <div class="page-number">4</div>
         </div>
 
-        <!-- PAGE 3: Specs & Deal (Image 3) -->
+        <!-- PAGE 5: Full Infographic 2 (img6) -->
+        <div class="page" style="padding: 0; background: #000;">
+            <img src="assets/img6.png" class="img-contain" alt="Détails Techniques Yaris" />
+        </div>
+
+        <!-- PAGE 6: Lifestyle / Exterior (img7) -->
+        <div class="page">
+            <div class="bg-image-half" style="background-image: url('assets/img7.png');"></div>
+            <div class="page-content text-content">
+                <h2>Design & Caractère</h2>
+                <h3>Finition "Style" Bi-Ton</h3>
+                <p><strong>[FR]</strong> Ne passez plus inaperçu. Avec sa peinture bi-ton exclusive, ses jantes en alliage 17 pouces et sa signature lumineuse Full LED, cette édition Style allie sportivité et élégance. Son format compact la rend imbattable en ville.</p>
+                <p><strong>[EN]</strong> Stand out from the crowd. With its exclusive bi-tone paint, 17-inch alloy wheels, and Full LED lighting signature, this Style edition perfectly blends sportiness and elegance.</p>
+            </div>
+            <div class="page-number">6</div>
+        </div>
+
+        <!-- PAGE 7: Pricing & Specs -->
         <div class="page">
             <div class="page-content text-content" style="padding-top: 20px;">
                 <h2 style="margin-bottom: 10px;">Fiche Technique</h2>
                 <ul class="specs-list">
                     <li><span>Kilométrage / Mileage</span> <strong>38 494 km</strong></li>
                     <li><span>Moteur / Engine</span> <strong>1.5 Hybrid 116 CV</strong></li>
-                    <li><span>Extérieur / Exterior</span> <strong>Bi-Ton (Gris & Blanc)</strong></li>
+                    <li><span>Extérieur / Exterior</span> <strong>Gris Foncé & Toit Blanc</strong></li>
+                    <li><span>Disponibilité / Availability</span> <strong>Immédiate</strong></li>
                 </ul>
 
                 <div class="cta-box">
                     <h3>21 900 €</h3>
-                    <p style="color: #d4af37; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Garantie Constructeur jusqu'en 2033*</p>
-                    <p style="font-size: 0.9rem;">Prêt(e) pour un essai ? / Ready for a drive?</p>
-                    <a href="https://wa.me/352621430283" target="_blank">Contacter le Vendeur</a>
+                    <p style="color: #d4af37; font-weight: 600; margin-bottom: 10px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Garantie Constructeur jusqu'en 2033*</p>
+                    <p style="font-size: 0.85rem;">Prêt(e) pour un essai ? / Ready for a test drive?</p>
+                    <a href="https://wa.me/352621430283" target="_blank">Contact WhatsApp</a>
                 </div>
             </div>
-            <div class="page-number">3</div>
+            <div class="page-number">7</div>
         </div>
 
-        <!-- PAGE 4 (BACK COVER): Legal & Main Infographic (Image 3) -->
-        <div class="page --hard">
-            <div class="bg-image" style="background-image: url('assets/img3.png'); height: 75%; border-bottom: 1px solid #333;"></div>
-            <div class="page-content text-content" style="padding: 20px; background: #111;">
-                <p class="legal-text">
-                    <strong>AVIS IMPORTANT :</strong> Ce véhicule d'occasion est vendu de particulier à particulier, dans l'état bien connu de l'acheteur. Conformément à la législation européenne, le vendeur n'accorde aucune garantie personnelle, légale ou commerciale, et décline toute responsabilité pour les vices cachés. Le véhicule bénéficie exclusivement de la garantie constructeur "Toyota Relax".
-                </p>
+        <!-- PAGE 8: BACK COVER (Infographic 3 img3 + Legal) -->
+        <div class="page --hard" style="padding: 0; display: flex; flex-direction: column;">
+            <div style="flex: 1; background: #000; overflow: hidden;">
+                <img src="assets/img3.png" class="img-contain" style="padding: 10px;" alt="Résumé Complet" />
+            </div>
+            <div class="legal-text">
+                <strong>AVIS IMPORTANT :</strong> Ce véhicule d'occasion est vendu de particulier à particulier, dans l'état bien connu de l'acheteur. Conformément à la législation, le vendeur décline toute garantie légale supplémentaire, l'acheteur s'appuyant exclusivement sur la garantie constructeur "Toyota Relax" transférable.
             </div>
         </div>
 
     </div>
 
-    <!-- Script dependencies for page-flip -->
     <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const pageFlip = new St.PageFlip(document.getElementById('flipbook'), {
-                width: 450, // base page width
-                height: 650, // base page height
+                width: 450, 
+                height: 650, 
                 size: "fixed",
                 minWidth: 450,
                 maxWidth: 450,
                 minHeight: 650,
                 maxHeight: 650,
-                maxShadowOpacity: 0.5,
+                maxShadowOpacity: 0.6,
                 showCover: true,
                 mobileScrollSupport: false,
                 usePortrait: false

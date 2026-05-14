@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Toyota Yaris Hybrid Style - Édition Prestige</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <style>
@@ -11,13 +11,27 @@
             background: radial-gradient(circle at center, #2a2a2a 0%, #000000 100%);
             font-family: 'Montserrat', sans-serif;
             display: flex; justify-content: center; align-items: center;
-            height: 100vh; color: #1a1a1a; overflow: hidden; perspective: 1500px;
+            min-height: 100vh; color: #1a1a1a; overflow: hidden; perspective: 1500px;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
         .flip-book {
-            width: 900px; height: 650px;
+            width: 100%; 
+            max-width: 900px; 
+            height: 100%;
+            max-height: 650px;
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(0,0,0,0.5);
             background: #fff;
+            position: relative;
         }
 
         .page {
@@ -27,13 +41,14 @@
             background-image: linear-gradient(120deg, transparent 90%, rgba(0,0,0,0.03) 100%);
         }
 
+        /* Shadow gradient for realism */
         .page::before {
             content: ''; position: absolute; top: 0; bottom: 0; width: 30px;
-            background: linear-gradient(to right, rgba(0,0,0,0.18) 0%, transparent 100%);
+            background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%);
             z-index: 10; pointer-events: none;
         }
-        .page:nth-child(even)::before { right: 0; background: linear-gradient(to left, rgba(0,0,0,0.18) 0%, transparent 100%); }
-        .page:nth-child(odd)::before { left: 0; background: linear-gradient(to right, rgba(0,0,0,0.18) 0%, transparent 100%); }
+        .page:nth-child(even)::before { right: 0; background: linear-gradient(to left, rgba(0,0,0,0.15) 0%, transparent 100%); }
+        .page:nth-child(odd)::before { left: 0; background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%); }
 
         .page.--hard {
             background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
@@ -50,7 +65,6 @@
         .bg-image-half { width: 100%; height: 45%; background-size: cover; background-position: center; border-bottom: 2px solid #d4af37; pointer-events: none; }
         .bg-banner { width: 100%; height: 35%; background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #111; pointer-events: none; }
 
-        /* REMOVED overflow: auto. Text must fit exactly so swipe physics remain perfectly smooth */
         .text-content { 
             flex: 1; 
             padding: 25px; 
@@ -67,7 +81,6 @@
         h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #1a1a1a; margin-bottom: 12px; letter-spacing: 1px; border-bottom: 1px solid #d4af37; padding-bottom: 5px; display: inline-block; align-self: flex-start; }
         h3 { font-size: 0.8rem; margin-bottom: 15px; color: #777; text-transform: uppercase; letter-spacing: 2px; }
         
-        /* Language Block Styling for better distribution */
         .lang-block { margin-bottom: 15px; }
         .lang-tag { font-weight: 800; color: #d4af37; font-size: 0.7rem; margin-right: 5px; }
         p { font-size: 0.82rem; line-height: 1.5; color: #333; text-align: justify; margin: 0; }
@@ -113,303 +126,341 @@
         .cover-top { height: 25%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; background: #111; padding-bottom: 20px; pointer-events: none; }
         .cover-mid { height: 55%; width: 100%; background-image: url('assets/img2.png'); background-size: cover; background-position: center; border-top: 2px solid #d4af37; border-bottom: 2px solid #d4af37; pointer-events: none;}
         .cover-bot { height: 20%; background: #111; display: flex; justify-content: center; align-items: center; pointer-events: none; }
+
+        /* Responsive Design for Mobile Devices */
+        @media (max-width: 768px) {
+            .container { padding: 0; }
+            .flip-book {
+                width: 100vw;
+                height: 100vh;
+                max-width: none;
+                max-height: none;
+                box-shadow: none;
+            }
+            .text-content { padding: 15px; justify-content: space-evenly; }
+            .page-content { padding: 20px; }
+            h1 { font-size: 2.2rem; margin-bottom: 5px; }
+            h2 { font-size: 1.2rem; margin-bottom: 8px; }
+            h3 { font-size: 0.75rem; margin-bottom: 10px; }
+            p { font-size: 0.75rem; line-height: 1.4; }
+            .badge { padding: 8px 15px; font-size: 0.75rem; letter-spacing: 1px; }
+            .cta-box h3 { font-size: 1.8rem; }
+            .cta-box { padding: 15px; margin-top: 10px; }
+            .price-sticker { font-size: 1.1rem; bottom: 20px; left: 10px; padding: 5px 12px; }
+            .caption-box h2 { font-size: 1.1rem; }
+            .caption-box p { font-size: 0.8rem; }
+            .legal-text { font-size: 0.6rem; padding: 10px; }
+            .lang-block { margin-bottom: 10px; }
+            .specs-list li { padding: 8px 0; }
+            .specs-list strong { font-size: 1rem; }
+            .page-number { bottom: 10px; }
+            .page:nth-child(even) .page-number { left: 15px; }
+            .page:nth-child(odd) .page-number { right: 15px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="flip-book" id="flipbook">
-        
-        <!-- PAGE 1: COVER -->
-        <div class="page --hard" style="padding:0;">
-            <div class="cover-top">
-                <h1 style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">TOYOTA YARIS</h1>
-                <p style="font-family:'Montserrat', sans-serif; color:#fff; font-size:1rem; letter-spacing:3px; font-weight:300; text-transform:uppercase; margin:0;">1.5 Hybrid Style e-CVT</p>
-            </div>
-            <div class="cover-mid"></div>
-            <div class="cover-bot">
-                <div class="badge" style="margin: 0;">L'Élégance Sans Compromis</div>
-            </div>
-        </div>
-
-        <!-- PAGE 2: Full Infographic 1 (img5) + Sticker -->
-        <div class="page" style="padding: 0; background: #000; display:flex; justify-content:center; align-items:center;">
-            <img src="assets/img5.png" class="img-contain" alt="Infographic Toyota Yaris" />
-            <div class="price-sticker">NOUVEAU PRIX: 21 900 €</div>
-            <div class="page-number" style="color:#fff;">2</div>
-        </div>
-
-        <!-- PAGE 3: Economy Banner + Text -->
-        <div class="page">
-            <div class="bg-banner" style="background-image: url('assets/img1.png');"></div>
-            <div class="page-content text-content">
-                <h2>L'Économie à l'État Pur</h2>
-                <h3>Hybride Auto-rechargeable</h3>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">FR</span> Oubliez les pleins coûteux. Grâce à sa motorisation hybride innovante, cette Yaris roule jusqu'à 50% du temps en mode 100% électrique lors de vos trajets urbains. Une conduite fluide, silencieuse, et incroyablement économique.</p>
+    <div class="container">
+        <div class="flip-book" id="flipbook">
+            
+            <!-- PAGE 1: COVER -->
+            <div class="page --hard" style="padding:0;">
+                <div class="cover-top">
+                    <h1 style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">TOYOTA YARIS</h1>
+                    <p style="font-family:'Montserrat', sans-serif; color:#fff; font-size:0.9rem; letter-spacing:3px; font-weight:300; text-transform:uppercase; margin:0;">1.5 Hybrid Style e-CVT</p>
                 </div>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">EN</span> Forget expensive refueling. Thanks to its innovative hybrid engine, this Yaris drives up to 50% of the time in 100% electric mode during urban trips. Smooth, silent, and incredibly economical.</p>
+                <div class="cover-mid"></div>
+                <div class="cover-bot">
+                    <div class="badge" style="margin: 0;">L'Élégance Sans Compromis</div>
                 </div>
             </div>
-            <div class="page-number">3</div>
-        </div>
 
-        <!-- PAGE 4: Premium Interior (img4) -->
-        <div class="page">
-            <div class="page-content text-content">
-                <h2>Tranquillité d'Esprit</h2>
-                <h3>Sécurité & Confort Premium</h3>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">FR</span> Équipée de série du <em>Toyota Safety Sense</em> (freinage d'urgence, maintien de voie), elle veille sur vous en permanence. L'intérieur vous accueille avec des matériaux premium et une connectivité Apple CarPlay.</p>
-                </div>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">EN</span> Equipped as standard with <em>Toyota Safety Sense</em> (emergency braking, lane keep assist), it watches over you constantly. The interior welcomes you with premium materials and Apple CarPlay.</p>
-                </div>
+            <!-- PAGE 2: Full Infographic 1 (img5) + Sticker -->
+            <div class="page" style="padding: 0; background: #000; display:flex; justify-content:center; align-items:center;">
+                <img src="assets/img5.png" class="img-contain" alt="Infographic Toyota Yaris" />
+                <div class="price-sticker">NOUVEAU PRIX: 21 900 €</div>
+                <div class="page-number" style="color:#fff;">2</div>
             </div>
-            <div class="bg-image-half" style="background-image: url('assets/img4.png'); border-bottom: none; border-top: 2px solid #d4af37;"></div>
-            <div class="page-number">4</div>
-        </div>
 
-        <!-- PAGE 5: Full Infographic 2 (img6) + Sticker -->
-        <div class="page" style="padding: 0; background: #000; display:flex; justify-content:center; align-items:center;">
-            <img src="assets/img6.png" class="img-contain" alt="Détails Techniques Yaris" />
-            <div class="price-sticker">NOUVEAU PRIX: 21 900 €</div>
-            <div class="page-number" style="color:#fff;">5</div>
-        </div>
-
-        <!-- PAGE 6: Hybrid Synergy Drive (img9) -->
-        <div class="page dark-theme">
-            <div class="bg-image-half" style="background-image: url('assets/img9.png');"></div>
-            <div class="page-content text-content">
-                <h2>Le Cœur Hybride</h2>
-                <h3 style="color:#d4af37;">Toyota Synergy Drive</h3>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">FR</span> L'innovation Toyota à son apogée. Le système hybride de 4ème génération combine un moteur essence ultra-efficient avec un moteur électrique puissant. Batterie auto-rechargeable.</p>
-                </div>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">EN</span> Toyota innovation at its peak. The 4th generation hybrid system combines an ultra-efficient petrol engine with a powerful electric motor. Self-charging battery capability.</p>
-                </div>
-            </div>
-            <div class="page-number">6</div>
-        </div>
-
-        <!-- PAGE 7: Eco Lifestyle (img10) -->
-        <div class="page">
-            <div class="page-content text-content">
-                <h2>Respect de l'Environnement</h2>
-                <h3>Un Style de Vie Durable</h3>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">FR</span> Roulez en harmonie avec la nature. Les très faibles émissions (Euro 6) font de la Yaris Hybrid le choix parfait pour les conducteurs soucieux de leur empreinte carbone, sans sacrifier le luxe.</p>
-                </div>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">EN</span> Drive in harmony with nature. Very low emissions (Euro 6) make the Yaris Hybrid the perfect choice for eco-conscious drivers, without ever sacrificing luxury or style.</p>
-                </div>
-            </div>
-            <div class="bg-image-half" style="background-image: url('assets/img10.png'); border-bottom: none; border-top: 2px solid #d4af37;"></div>
-            <div class="page-number">7</div>
-        </div>
-
-        <!-- PAGE 8: LED Headlights (img8) -->
-        <div class="page" style="padding: 0;">
-            <div class="full-bg" style="background-image: url('assets/img8.png');">
-                <div class="caption-box">
-                    <h2>Signature Lumineuse</h2>
-                    <p style="margin-top: 8px;">Phares Full LED & Visibilité Nocturne Exceptionnelle</p>
-                </div>
-            </div>
-            <div class="page-number" style="color:#fff;">8</div>
-        </div>
-
-        <!-- PAGE 9: Premium Connectivity (img11) -->
-        <div class="page dark-theme">
-            <div class="bg-image-half" style="background-image: url('assets/img11.png'); border-bottom: 2px solid #d4af37;"></div>
-            <div class="page-content text-content">
-                <h2>Contrôle Total</h2>
-                <h3 style="color:#d4af37;">Application MyToyota</h3>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">FR</span> Votre voiture dans votre poche. Contrôlez la climatisation à distance, vérifiez le verrouillage des portes et analysez vos trajets depuis votre smartphone.</p>
-                </div>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">EN</span> Your car in your pocket. Control the climate control remotely, check door locks, and analyze your driving data straight from your smartphone app.</p>
-                </div>
-            </div>
-            <div class="page-number">9</div>
-        </div>
-
-        <!-- PAGE 10: Lifestyle / Exterior (img7) -->
-        <div class="page">
-            <div class="page-content text-content">
-                <h2>Design Bi-Ton</h2>
-                <h3>Finition "Style"</h3>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">FR</span> Avec sa peinture bi-ton exclusive (Gris Foncé et Toit Blanc) et ses jantes alliage 17", cette édition allie sportivité et élégance urbaine parfaite.</p>
-                </div>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">EN</span> With its exclusive bi-tone paint (Dark Grey and White Roof) and 17-inch alloy wheels, this edition perfectly blends sportiness and urban elegance.</p>
-                </div>
-            </div>
-            <div class="bg-image-half" style="background-image: url('assets/img7.png'); border-top: 2px solid #d4af37; border-bottom: none;"></div>
-            <div class="page-number">10</div>
-        </div>
-
-        <!-- PAGE 11: Toyota Relax -->
-        <div class="page">
-            <div class="page-content text-content" style="align-items: center;">
-                <div style="width: 80px; height: 80px; border: 3px solid #d4af37; border-radius: 50%; display:flex; justify-content:center; align-items:center; margin-bottom: 20px;">
-                    <h1 style="font-size: 2.2rem; margin:0; padding-top: 5px;">10</h1>
-                </div>
-                <h2 style="align-self: center;">Garantie Toyota Relax</h2>
-                <h3 style="text-align: center;">Tranquillité / Peace of Mind</h3>
-                
-                <div class="lang-block" style="text-align: center; margin-top: 10px;">
-                    <p style="text-align: center;"><span class="lang-tag">FR</span> En effectuant votre entretien annuel dans le réseau Toyota, votre garantie est prolongée d'un an, jusqu'aux 10 ans de la voiture. La batterie hybride est incluse.</p>
-                </div>
-                
-                <div class="lang-block" style="text-align: center;">
-                    <p style="text-align: center;"><span class="lang-tag">EN</span> By doing your annual service at a Toyota dealer, your warranty is extended by one year, up to 10 years. The hybrid battery is fully covered.</p>
-                </div>
-            </div>
-            <div class="page-number">11</div>
-        </div>
-
-        <!-- PAGE 12: Agilité Urbaine -->
-        <div class="page dark-theme">
-            <div class="page-content text-content">
-                <h2>Agilité Urbaine</h2>
-                <h3 style="color:#d4af37;">Architecture TNGA-B</h3>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">FR</span> Construite sur la plateforme TNGA, cette Yaris offre un centre de gravité abaissé. Maniabilité hors pair en ville et plaisir dynamique sur route. Boîte automatique e-CVT super fluide.</p>
-                </div>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">EN</span> Built on the TNGA platform, this Yaris offers a lower center of gravity. Unmatched maneuverability in the city and dynamic joy on the road. Super smooth e-CVT automatic gearbox.</p>
-                </div>
-            </div>
-            <div class="page-number">12</div>
-        </div>
-
-        <!-- PAGE 13: Espace et Confort -->
-        <div class="page">
-            <div class="page-content text-content">
-                <h2>Espace Repensé</h2>
-                <h3>Confort & Modularité / Comfort</h3>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">FR</span> Malgré ses dimensions compactes, l'intérieur offre un dégagement généreux. Coffre modulable de 286L, sièges chauffants et climatisation bi-zone pour un confort parfait.</p>
-                </div>
-                
-                <div class="lang-block">
-                    <p><span class="lang-tag">EN</span> Despite its compact dimensions, the interior offers generous headroom. 286L modular trunk, heated seats, and dual-zone climate control for perfect comfort.</p>
-                </div>
-            </div>
-            <div class="page-number">13</div>
-        </div>
-
-        <!-- PAGE 14: Tech Specs (Text) -->
-        <div class="page dark-theme">
-            <div class="page-content text-content">
-                <h2 style="margin-bottom: 5px;">Spécifications</h2>
-                <ul class="specs-list">
-                    <li>
-                        <span class="specs-label">Moteur <br/> <em>Engine</em></span> 
-                        <strong>1.5L Hybride e-CVT</strong>
-                    </li>
-                    <li>
-                        <span class="specs-label">Puissance <br/> <em>Power</em></span> 
-                        <strong>116 ch (85 kW)</strong>
-                    </li>
-                    <li>
-                        <span class="specs-label">0-100 km/h</span> 
-                        <strong>9.7 sec</strong>
-                    </li>
-                    <li>
-                        <span class="specs-label">Conso Mixte <br/> <em>Consumption</em></span> 
-                        <strong>3.8 - 4.3 L/100km</strong>
-                    </li>
-                    <li>
-                        <span class="specs-label">Émissions CO2 <br/> <em>Emissions</em></span> 
-                        <strong>87 - 98 g/km</strong>
-                    </li>
-                    <li>
-                        <span class="specs-label">Volume Coffre <br/> <em>Trunk Volume</em></span> 
-                        <strong>286 Litres</strong>
-                    </li>
-                    <li style="border-bottom: none;">
-                        <span class="specs-label">Poids à vide <br/> <em>Weight</em></span> 
-                        <strong>1090 kg</strong>
-                    </li>
-                </ul>
-            </div>
-            <div class="page-number">14</div>
-        </div>
-
-        <!-- PAGE 15: Pricing & CTA -->
-        <div class="page">
-            <div class="page-content text-content" style="align-items: center;">
-                <h2 style="text-align:center; border:none; padding-bottom:0;">Prêt(e) à prendre le volant ?</h2>
-                <h3 style="text-align:center; color:#777; font-size:1rem; margin-bottom: 20px;">Ready to take the wheel?</h3>
-                
-                <div class="cta-box" style="margin-top:0; width: 100%;">
-                    <h3 style="font-size: 2.5rem; letter-spacing: 2px;">21 900 €</h3>
-                    <p style="color: #d4af37; font-weight: 600; margin-bottom: 15px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">État Comme Neuf - Condition: Like New</p>
-                    <p style="font-size: 0.8rem; color:#fff; margin-bottom: 5px;">Ne laissez pas passer cette opportunité unique.</p>
-                    <p style="font-size: 0.8rem; color:#fff; font-style: italic;">Don't miss this unique opportunity.</p>
+            <!-- PAGE 3: Economy Banner + Text -->
+            <div class="page">
+                <div class="bg-banner" style="background-image: url('assets/img1.png');"></div>
+                <div class="page-content text-content">
+                    <h2>L'Économie à l'État Pur</h2>
+                    <h3>Hybride Auto-rechargeable</h3>
                     
-                    <a href="https://wa.me/352621430283?text=Bonjour%20!%20J'ai%20vu%20votre%20catalogue%20en%20ligne.%20Je%20suis%20tr%C3%A8s%20int%C3%A9ress%C3%A9(e)%20par%20la%20Toyota%20Yaris%20Hybrid%20%C3%A0%2021%20900%20%E2%82%AC.%20Est-elle%20toujours%20disponible%20%3F" target="_blank">Contact WhatsApp</a>
+                    <div class="lang-block">
+                        <p><span class="lang-tag">FR</span> Oubliez les pleins coûteux. Grâce à sa motorisation hybride innovante, cette Yaris roule jusqu'à 50% du temps en mode 100% électrique lors de vos trajets urbains. Une conduite fluide, silencieuse, et incroyablement économique.</p>
+                    </div>
                     
-                    <p style="font-size: 0.75rem; margin-top: 20px; color:#aaa;">Email: yucolaguilar@gmail.com</p>
+                    <div class="lang-block">
+                        <p><span class="lang-tag">EN</span> Forget expensive refueling. Thanks to its innovative hybrid engine, this Yaris drives up to 50% of the time in 100% electric mode during urban trips. Smooth, silent, and incredibly economical.</p>
+                    </div>
+                </div>
+                <div class="page-number">3</div>
+            </div>
+
+            <!-- PAGE 4: Premium Interior (img4) -->
+            <div class="page">
+                <div class="page-content text-content">
+                    <h2>Tranquillité d'Esprit</h2>
+                    <h3>Sécurité & Confort Premium</h3>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">FR</span> Équipée de série du <em>Toyota Safety Sense</em> (freinage d'urgence, maintien de voie), elle veille sur vous en permanence. L'intérieur vous accueille avec des matériaux premium et une connectivité Apple CarPlay.</p>
+                    </div>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">EN</span> Equipped as standard with <em>Toyota Safety Sense</em> (emergency braking, lane keep assist), it watches over you constantly. The interior welcomes you with premium materials and Apple CarPlay.</p>
+                    </div>
+                </div>
+                <div class="bg-image-half" style="background-image: url('assets/img4.png'); border-bottom: none; border-top: 2px solid #d4af37;"></div>
+                <div class="page-number">4</div>
+            </div>
+
+            <!-- PAGE 5: Full Infographic 2 (img6) + Sticker -->
+            <div class="page" style="padding: 0; background: #000; display:flex; justify-content:center; align-items:center;">
+                <img src="assets/img6.png" class="img-contain" alt="Détails Techniques Yaris" />
+                <div class="price-sticker">NOUVEAU PRIX: 21 900 €</div>
+                <div class="page-number" style="color:#fff;">5</div>
+            </div>
+
+            <!-- PAGE 6: Hybrid Synergy Drive (img9) -->
+            <div class="page dark-theme">
+                <div class="bg-image-half" style="background-image: url('assets/img9.png');"></div>
+                <div class="page-content text-content">
+                    <h2>Le Cœur Hybride</h2>
+                    <h3 style="color:#d4af37;">Toyota Synergy Drive</h3>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">FR</span> L'innovation Toyota à son apogée. Le système hybride de 4ème génération combine un moteur essence ultra-efficient avec un moteur électrique puissant. Batterie auto-rechargeable.</p>
+                    </div>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">EN</span> Toyota innovation at its peak. The 4th generation hybrid system combines an ultra-efficient petrol engine with a powerful electric motor. Self-charging battery capability.</p>
+                    </div>
+                </div>
+                <div class="page-number">6</div>
+            </div>
+
+            <!-- PAGE 7: Eco Lifestyle (img10) -->
+            <div class="page">
+                <div class="page-content text-content">
+                    <h2>Respect Environnemental</h2>
+                    <h3>Un Style de Vie Durable</h3>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">FR</span> Roulez en harmonie avec la nature. Les très faibles émissions (Euro 6) font de la Yaris Hybrid le choix parfait pour les conducteurs soucieux de leur empreinte carbone, sans sacrifier le luxe.</p>
+                    </div>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">EN</span> Drive in harmony with nature. Very low emissions (Euro 6) make the Yaris Hybrid the perfect choice for eco-conscious drivers, without ever sacrificing luxury or style.</p>
+                    </div>
+                </div>
+                <div class="bg-image-half" style="background-image: url('assets/img10.png'); border-bottom: none; border-top: 2px solid #d4af37;"></div>
+                <div class="page-number">7</div>
+            </div>
+
+            <!-- PAGE 8: LED Headlights (img8) -->
+            <div class="page" style="padding: 0;">
+                <div class="full-bg" style="background-image: url('assets/img8.png');">
+                    <div class="caption-box">
+                        <h2>Signature Lumineuse</h2>
+                        <p style="margin-top: 5px;">Phares Full LED & Visibilité Nocturne Exceptionnelle</p>
+                    </div>
+                </div>
+                <div class="page-number" style="color:#fff;">8</div>
+            </div>
+
+            <!-- PAGE 9: Premium Connectivity (img11) -->
+            <div class="page dark-theme">
+                <div class="bg-image-half" style="background-image: url('assets/img11.png'); border-bottom: 2px solid #d4af37;"></div>
+                <div class="page-content text-content">
+                    <h2>Contrôle Total</h2>
+                    <h3 style="color:#d4af37;">Application MyToyota</h3>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">FR</span> Votre voiture dans votre poche. Contrôlez la climatisation à distance, vérifiez le verrouillage des portes et analysez vos trajets depuis votre smartphone.</p>
+                    </div>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">EN</span> Your car in your pocket. Control the climate control remotely, check door locks, and analyze your driving data straight from your smartphone app.</p>
+                    </div>
+                </div>
+                <div class="page-number">9</div>
+            </div>
+
+            <!-- PAGE 10: Lifestyle / Exterior (img7) -->
+            <div class="page">
+                <div class="page-content text-content">
+                    <h2>Design Bi-Ton</h2>
+                    <h3>Finition "Style"</h3>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">FR</span> Avec sa peinture bi-ton exclusive (Gris Foncé et Toit Blanc) et ses jantes alliage 17", cette édition allie sportivité et élégance urbaine parfaite.</p>
+                    </div>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">EN</span> With its exclusive bi-tone paint (Dark Grey and White Roof) and 17-inch alloy wheels, this edition perfectly blends sportiness and urban elegance.</p>
+                    </div>
+                </div>
+                <div class="bg-image-half" style="background-image: url('assets/img7.png'); border-top: 2px solid #d4af37; border-bottom: none;"></div>
+                <div class="page-number">10</div>
+            </div>
+
+            <!-- PAGE 11: Toyota Relax -->
+            <div class="page">
+                <div class="page-content text-content" style="align-items: center;">
+                    <div style="width: 70px; height: 70px; border: 3px solid #d4af37; border-radius: 50%; display:flex; justify-content:center; align-items:center; margin-bottom: 15px;">
+                        <h1 style="font-size: 1.8rem; margin:0; padding-top: 5px;">10</h1>
+                    </div>
+                    <h2 style="align-self: center;">Garantie Toyota Relax</h2>
+                    <h3 style="text-align: center;">Tranquillité / Peace of Mind</h3>
+                    
+                    <div class="lang-block" style="text-align: center; margin-top: 10px;">
+                        <p style="text-align: center;"><span class="lang-tag">FR</span> En effectuant votre entretien annuel dans le réseau Toyota, votre garantie est prolongée d'un an, jusqu'aux 10 ans de la voiture. La batterie hybride est incluse.</p>
+                    </div>
+                    
+                    <div class="lang-block" style="text-align: center;">
+                        <p style="text-align: center;"><span class="lang-tag">EN</span> By doing your annual service at a Toyota dealer, your warranty is extended by one year, up to 10 years. The hybrid battery is fully covered.</p>
+                    </div>
+                </div>
+                <div class="page-number">11</div>
+            </div>
+
+            <!-- PAGE 12: Agilité Urbaine -->
+            <div class="page dark-theme">
+                <div class="page-content text-content">
+                    <h2>Agilité Urbaine</h2>
+                    <h3 style="color:#d4af37;">Architecture TNGA-B</h3>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">FR</span> Construite sur la plateforme TNGA, cette Yaris offre un centre de gravité abaissé. Maniabilité hors pair en ville et plaisir dynamique sur route. Boîte automatique e-CVT super fluide.</p>
+                    </div>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">EN</span> Built on the TNGA platform, this Yaris offers a lower center of gravity. Unmatched maneuverability in the city and dynamic joy on the road. Super smooth e-CVT automatic gearbox.</p>
+                    </div>
+                </div>
+                <div class="page-number">12</div>
+            </div>
+
+            <!-- PAGE 13: Espace et Confort -->
+            <div class="page">
+                <div class="page-content text-content">
+                    <h2>Espace Repensé</h2>
+                    <h3>Confort & Modularité / Comfort</h3>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">FR</span> Malgré ses dimensions compactes, l'intérieur offre un dégagement généreux. Coffre modulable de 286L, sièges chauffants et climatisation bi-zone pour un confort parfait.</p>
+                    </div>
+                    
+                    <div class="lang-block">
+                        <p><span class="lang-tag">EN</span> Despite its compact dimensions, the interior offers generous headroom. 286L modular trunk, heated seats, and dual-zone climate control for perfect comfort.</p>
+                    </div>
+                </div>
+                <div class="page-number">13</div>
+            </div>
+
+            <!-- PAGE 14: Tech Specs (Text) -->
+            <div class="page dark-theme">
+                <div class="page-content text-content">
+                    <h2 style="margin-bottom: 5px;">Spécifications</h2>
+                    <ul class="specs-list">
+                        <li>
+                            <span class="specs-label">Moteur <br/> <em>Engine</em></span> 
+                            <strong>1.5L Hybride e-CVT</strong>
+                        </li>
+                        <li>
+                            <span class="specs-label">Puissance <br/> <em>Power</em></span> 
+                            <strong>116 ch (85 kW)</strong>
+                        </li>
+                        <li>
+                            <span class="specs-label">0-100 km/h</span> 
+                            <strong>9.7 sec</strong>
+                        </li>
+                        <li>
+                            <span class="specs-label">Conso Mixte <br/> <em>Consumption</em></span> 
+                            <strong>3.8 - 4.3 L/100km</strong>
+                        </li>
+                        <li>
+                            <span class="specs-label">Émissions CO2 <br/> <em>Emissions</em></span> 
+                            <strong>87 - 98 g/km</strong>
+                        </li>
+                        <li>
+                            <span class="specs-label">Volume Coffre <br/> <em>Trunk</em></span> 
+                            <strong>286 Litres</strong>
+                        </li>
+                        <li style="border-bottom: none;">
+                            <span class="specs-label">Poids à vide <br/> <em>Weight</em></span> 
+                            <strong>1090 kg</strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="page-number">14</div>
+            </div>
+
+            <!-- PAGE 15: Pricing & CTA -->
+            <div class="page">
+                <div class="page-content text-content" style="align-items: center;">
+                    <h2 style="text-align:center; border:none; padding-bottom:0;">Prêt(e) à prendre le volant ?</h2>
+                    <h3 style="text-align:center; color:#777; font-size:0.9rem; margin-bottom: 10px;">Ready to take the wheel?</h3>
+                    
+                    <div class="cta-box" style="margin-top:0; width: 100%;">
+                        <h3 style="font-size: 2.2rem; letter-spacing: 2px;">21 900 €</h3>
+                        <p style="color: #d4af37; font-weight: 600; margin-bottom: 10px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;">État Comme Neuf - Condition: Like New</p>
+                        <p style="font-size: 0.75rem; color:#fff; margin-bottom: 5px;">Ne laissez pas passer cette opportunité unique.</p>
+                        <p style="font-size: 0.75rem; color:#fff; font-style: italic;">Don't miss this unique opportunity.</p>
+                        
+                        <a href="https://wa.me/352621430283?text=Bonjour%20!%20J'ai%20vu%20votre%20catalogue%20en%20ligne.%20Je%20suis%20tr%C3%A8s%20int%C3%A9ress%C3%A9(e)%20par%20la%20Toyota%20Yaris%20Hybrid%20%C3%A0%2021%20900%20%E2%82%AC.%20Est-elle%20toujours%20disponible%20%3F" target="_blank">Contact WhatsApp</a>
+                        
+                        <p style="font-size: 0.7rem; margin-top: 15px; color:#aaa;">Email: yucolaguilar@gmail.com</p>
+                    </div>
+                </div>
+                <div class="page-number">15</div>
+            </div>
+
+            <!-- PAGE 16: BACK COVER (img3 + Sticker + Legal) -->
+            <div class="page --hard" style="padding: 0; display: flex; flex-direction: column; position:relative;">
+                <div style="flex: 1; background: #000; overflow: hidden; position:relative; display:flex; justify-content:center; align-items:center;">
+                    <img src="assets/img3.png" class="img-contain" style="padding: 10px;" alt="Résumé Complet" />
+                    <div class="price-sticker" style="bottom: 20px;">NOUVEAU PRIX: 21 900 €</div>
+                </div>
+                <div class="legal-text">
+                    <strong>AVIS IMPORTANT / DISCLAIMER :</strong> Ce véhicule d'occasion est vendu de particulier à particulier. Le vendeur décline toute responsabilité pour les vices cachés. Le véhicule bénéficie de la garantie "Toyota Relax". / Sold as-is by private owner. Covered by transferable "Toyota Relax" warranty.
                 </div>
             </div>
-            <div class="page-number">15</div>
-        </div>
 
-        <!-- PAGE 16: BACK COVER (img3 + Sticker + Legal) -->
-        <div class="page --hard" style="padding: 0; display: flex; flex-direction: column; position:relative;">
-            <div style="flex: 1; background: #000; overflow: hidden; position:relative; display:flex; justify-content:center; align-items:center;">
-                <img src="assets/img3.png" class="img-contain" style="padding: 10px;" alt="Résumé Complet" />
-                <div class="price-sticker" style="bottom: 20px;">NOUVEAU PRIX: 21 900 €</div>
-            </div>
-            <div class="legal-text">
-                <strong>AVIS IMPORTANT / DISCLAIMER :</strong> Ce véhicule d'occasion est vendu de particulier à particulier. Le vendeur décline toute responsabilité pour les vices cachés. Le véhicule bénéficie de la garantie "Toyota Relax". / Sold as-is by private owner. Covered by transferable "Toyota Relax" warranty.
-            </div>
         </div>
-
     </div>
 
-    <!-- jQuery is strictly NOT required, but some setups perform smoother pointer events without overflow -->
+    <!-- jQuery is strictly NOT required -->
     <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const pageFlip = new St.PageFlip(document.getElementById('flipbook'), {
                 width: 450, 
                 height: 650, 
-                size: "fixed",
-                minWidth: 450,
+                size: "stretch", // KEY FOR RESPONSIVE
+                minWidth: 300,
                 maxWidth: 450,
-                minHeight: 650,
+                minHeight: 400,
                 maxHeight: 650,
                 maxShadowOpacity: 0.8,
                 showCover: true,
                 mobileScrollSupport: true,
-                usePortrait: false,
-                flippingTime: 1400, // Very smooth, luxurious transition
-                swipeDistance: 20   // Easier to trigger swipe
+                usePortrait: true, // IMPORTANT for mobile view (shows 1 page)
+                flippingTime: 1200,
+                swipeDistance: 20
             });
 
             pageFlip.loadFromHTML(document.querySelectorAll('.page'));
+            
+            // Adjust sizing properly when window is resized
+            window.addEventListener('resize', () => {
+                pageFlip.update();
+            });
         });
     </script>
 </body>

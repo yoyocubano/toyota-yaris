@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toyota Yaris Hybrid Style 2023 - Catalogue</title>
+    <title>Toyota Yaris Hybrid Style - Édition Prestige</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -12,153 +13,227 @@
         }
 
         body {
-            background-color: #1a1a1a;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: radial-gradient(circle at center, #2a2a2a 0%, #000000 100%);
+            font-family: 'Montserrat', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: #333;
+            color: #1a1a1a;
             overflow: hidden;
+            perspective: 1200px;
         }
 
         .flip-book {
-            width: 800px;
-            height: 600px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 900px;
+            height: 650px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 50px rgba(0,0,0,0.5);
             background: #fff;
         }
 
         .page {
-            background-color: #fff;
-            color: #333;
+            background-color: #fdfbf7; /* Slightly warm off-white for premium paper feel */
+            color: #1a1a1a;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             position: relative;
+            background-image: linear-gradient(120deg, transparent 90%, rgba(0,0,0,0.02) 100%);
         }
+
+        /* Shadow to simulate page fold */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%);
+            z-index: 10;
+        }
+        .page:nth-child(even)::before { right: 0; background: linear-gradient(to left, rgba(0,0,0,0.15) 0%, transparent 100%); }
+        .page:nth-child(odd)::before { left: 0; background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%); }
 
         /* Page Hard Cover Style */
         .page.--hard {
-            background-color: #0f111a;
+            background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
             color: white;
-            border: solid 1px #333;
+            border: solid 2px #d4af37; /* Gold border */
         }
 
         .page-content {
-            padding: 40px;
+            padding: 50px;
             height: 100%;
             display: flex;
             flex-direction: column;
+            z-index: 2;
+            position: relative;
         }
 
         /* Helpers */
         .bg-image {
             width: 100%;
-            height: 50%;
+            height: 55%;
             background-size: cover;
             background-position: center;
+            position: relative;
+            border-bottom: 2px solid #d4af37;
         }
 
         .text-content {
             flex: 1;
-            padding: 20px 0;
+            padding: 30px 20px;
         }
 
-        h1 { font-size: 2.2rem; color: #fff; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px;}
-        h2 { font-size: 1.5rem; color: #eb0a1e; margin-bottom: 15px; text-transform: uppercase; }
-        h3 { font-size: 1.2rem; margin-bottom: 10px; color: #333; }
-        p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; color: #555;}
+        h1 { 
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem; 
+            color: #d4af37; /* Metallic Gold */
+            margin-bottom: 15px; 
+            text-transform: uppercase; 
+            letter-spacing: 4px;
+            font-weight: 700;
+        }
         
-        .dark-text p { color: #ccc; }
-        .dark-text h3 { color: #fff; }
+        h2 { 
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; 
+            color: #1a1a1a; 
+            margin-bottom: 20px; 
+            letter-spacing: 1px;
+            border-bottom: 1px solid #d4af37;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        h3 { 
+            font-size: 0.9rem; 
+            margin-bottom: 15px; 
+            color: #888; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        p { 
+            font-size: 1rem; 
+            line-height: 1.8; 
+            margin-bottom: 20px; 
+            color: #444;
+            text-align: justify;
+        }
 
         /* Specific Page Styles */
         .cover {
             text-align: center;
             justify-content: center;
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('assets/img2.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(17,17,17,0.9)), url('assets/img2.jpg');
             background-size: cover;
             background-position: center;
         }
 
         .cover h1 {
-            font-size: 3rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 5px 15px rgba(0,0,0,0.8);
         }
 
-        .cover p {
-            color: white;
+        .cover .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
             font-size: 1.2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            letter-spacing: 3px;
+            font-weight: 300;
+            text-transform: uppercase;
         }
 
         .badge {
             display: inline-block;
-            background: #eb0a1e;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: bold;
+            background: transparent;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            padding: 10px 25px;
+            font-weight: 300;
             font-size: 0.9rem;
-            margin-top: 20px;
+            margin-top: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .specs-list {
             list-style: none;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .specs-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            font-size: 0.95rem;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            font-size: 1rem;
             display: flex;
             justify-content: space-between;
         }
 
         .specs-list strong {
-            color: #eb0a1e;
+            color: #1a1a1a;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
         }
 
         .cta-box {
-            background: #f4f4f4;
-            padding: 20px;
-            border-radius: 8px;
+            background: #111;
+            padding: 30px;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 30px;
+            border: 1px solid #d4af37;
+        }
+
+        .cta-box h3 {
+            color: #d4af37;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .cta-box p {
+            color: #ccc;
+            text-align: center;
         }
 
         .cta-box a {
             display: inline-block;
-            background: #25D366;
-            color: white;
+            background: #d4af37;
+            color: #111;
             text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            margin-top: 10px;
-            transition: transform 0.2s;
+            padding: 15px 35px;
+            font-weight: 600;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
         }
-        .cta-box a:hover { transform: scale(1.05); }
+        .cta-box a:hover { 
+            background: #fff; 
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
 
         .legal-text {
-            font-size: 0.7rem;
-            color: #888;
-            line-height: 1.4;
+            font-size: 0.75rem;
+            color: #666;
+            line-height: 1.6;
             margin-top: auto;
             text-align: justify;
+            font-family: 'Helvetica', sans-serif;
         }
 
         /* Page numbers */
         .page-number {
             position: absolute;
-            bottom: 20px;
-            font-size: 0.8rem;
-            color: #999;
+            bottom: 25px;
+            font-size: 0.9rem;
+            color: #d4af37;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
         }
-        .page:nth-child(even) .page-number { left: 20px; }
-        .page:nth-child(odd) .page-number { right: 20px; }
+        .page:nth-child(even) .page-number { left: 30px; }
+        .page:nth-child(odd) .page-number { right: 30px; }
 
     </style>
 </head>
@@ -169,67 +244,62 @@
         <!-- COVER -->
         <div class="page --hard">
             <div class="page-content cover">
-                <h1>Toyota Yaris</h1>
-                <p>1.5 VVT-i Hybrid Style e-CVT</p>
-                <div class="badge">L'Élégance Hybride Sans Compromis</div>
+                <h1>TOYOTA YARIS</h1>
+                <p class="subtitle">1.5 VVT-i Hybrid Style e-CVT</p>
+                <div class="badge">L'Élégance Sans Compromis</div>
             </div>
         </div>
 
-        <!-- PAGE 1: Economy -->
+        <!-- PAGE 1: Economy Banner (Image 1) -->
         <div class="page">
-            <div class="bg-image" style="background-image: url('assets/img1.jpg'); background-size: contain; background-repeat: no-repeat; background-color: #18191b;"></div>
+            <div class="bg-image" style="background-image: url('assets/img1.jpg'); background-color: #111; background-size: contain; background-repeat: no-repeat; border-bottom: none;"></div>
             <div class="page-content text-content">
-                <h2>Oubliez les pleins coûteux</h2>
-                <h3>Forget Expensive Fill-ups</h3>
-                <p><strong>[FR]</strong> Marre de voir votre budget s'envoler à la pompe ? Grâce à sa motorisation hybride auto-rechargeable (sans besoin de brancher), cette Yaris excelle en ville. Elle roule jusqu'à 50% du temps en mode électrique en milieu urbain. L'économie à l'état pur.</p>
-                <p><strong>[EN]</strong> Tired of seeing your budget vanish at the gas station? Thanks to its self-charging hybrid engine (no plugging required), this Yaris rules the city. It drives up to 50% of the time in electric mode in urban environments.</p>
+                <h2>L'Économie à l'État Pur</h2>
+                <h3>Self-Charging Hybrid Technology</h3>
+                <p><strong>[FR]</strong> Marre de voir votre budget s'envoler à la pompe ? Grâce à sa motorisation hybride auto-rechargeable (sans besoin de brancher), cette Yaris excelle. Elle roule jusqu'à 50% du temps en mode électrique en milieu urbain. Le silence et l'économie redéfinis.</p>
+                <p><strong>[EN]</strong> Tired of seeing your budget vanish? Thanks to its self-charging hybrid engine, this Yaris rules the city. It drives up to 50% of the time in electric mode in urban environments. Pure efficiency.</p>
             </div>
             <div class="page-number">1</div>
         </div>
 
-        <!-- PAGE 2: Peace of Mind & Interior -->
+        <!-- PAGE 2: Peace of Mind & Interior (Image 4) -->
         <div class="page">
             <div class="page-content text-content">
-                <h2>La Tranquillité d'Esprit Absolue</h2>
-                <h3>Absolute Peace of Mind</h3>
-                <p><strong>[FR]</strong> Toyota est mondialement reconnu pour une chose : ses voitures ne tombent pas en panne. Équipée du pack <em>Toyota Safety Sense</em> (freinage d'urgence, maintien de voie, caméra de recul), elle veille sur vous et vos passagers à chaque trajet.</p>
-                <p><strong>[EN]</strong> Toyota is globally renowned for one thing: their cars don't break down. Equipped with the <em>Toyota Safety Sense</em> pack, it watches over you and your passengers on every trip. A car you can trust, every single day.</p>
-                
-                <h2 style="margin-top: 30px;">Design Qui Fait Tourner les Têtes</h2>
-                <p>Finition haut de gamme "Style". Sa robe Bi-ton élégante, ses jantes alliage 17 pouces et ses phares Full LED lui donnent une allure agressive mais sophistiquée.</p>
+                <h2>La Tranquillité d'Esprit</h2>
+                <h3>Safety & Premium Comfort</h3>
+                <p><strong>[FR]</strong> Toyota est mondialement reconnu pour une chose : sa fiabilité absolue. Équipée du pack <em>Toyota Safety Sense</em> (freinage d'urgence, maintien de voie), elle veille sur vous. L'intérieur vous accueille avec des matériaux premium et une connectivité Apple CarPlay totale.</p>
+                <p><strong>[EN]</strong> Toyota is globally renowned for reliability. Equipped with the <em>Toyota Safety Sense</em> pack, it watches over you. The interior welcomes you with premium materials and total connectivity.</p>
             </div>
-            <div class="bg-image" style="background-image: url('assets/img4.jpg');"></div>
+            <div class="bg-image" style="background-image: url('assets/img4.jpg'); height: 45%; border-bottom: none; border-top: 2px solid #d4af37;"></div>
             <div class="page-number">2</div>
         </div>
 
-        <!-- PAGE 3: Specs & Deal -->
+        <!-- PAGE 3: Specs & Deal (Image 3) -->
         <div class="page">
-            <div class="page-content text-content">
-                <h2>Fiche Technique / Quick Specs</h2>
+            <div class="page-content text-content" style="padding-top: 20px;">
+                <h2 style="margin-bottom: 10px;">Fiche Technique</h2>
                 <ul class="specs-list">
-                    <li><span>Kilométrage / Mileage</span> <strong>38 494 km (Comme neuve)</strong></li>
-                    <li><span>Moteur / Engine</span> <strong>1.5 VVT-i Hybrid (116 CV)</strong></li>
-                    <li><span>Boîte / Transmission</span> <strong>Automatique (e-CVT)</strong></li>
-                    <li><span>Couleur / Color</span> <strong>Gris foncé bi-ton toit blanc</strong></li>
+                    <li><span>Kilométrage / Mileage</span> <strong>38 494 km</strong></li>
+                    <li><span>Moteur / Engine</span> <strong>1.5 Hybrid 116 CV</strong></li>
+                    <li><span>Extérieur / Exterior</span> <strong>Bi-Ton (Gris & Blanc)</strong></li>
                 </ul>
 
                 <div class="cta-box">
-                    <h3 style="color: #eb0a1e; font-size: 1.8rem; margin-bottom: 5px;">21 900 €</h3>
-                    <p style="margin-bottom: 15px; font-weight: bold;">Garantie Constructeur Toyota Relax jusqu'en 2033*</p>
-                    <p>Prêt(e) pour un essai ? / Ready for a test drive?</p>
-                    <a href="https://wa.me/352621430283" target="_blank">Contactez-moi sur WhatsApp</a>
+                    <h3>21 900 €</h3>
+                    <p style="color: #d4af37; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Garantie Constructeur jusqu'en 2033*</p>
+                    <p style="font-size: 0.9rem;">Prêt(e) pour un essai ? / Ready for a drive?</p>
+                    <a href="https://wa.me/352621430283" target="_blank">Contacter le Vendeur</a>
                 </div>
             </div>
             <div class="page-number">3</div>
         </div>
 
-        <!-- PAGE 4 (BACK COVER): Legal & Infographic -->
+        <!-- PAGE 4 (BACK COVER): Legal & Main Infographic (Image 3) -->
         <div class="page --hard">
-            <div class="bg-image" style="background-image: url('assets/img3.jpg'); height: 65%;"></div>
-            <div class="page-content text-content dark-text" style="padding: 20px;">
+            <div class="bg-image" style="background-image: url('assets/img3.jpg'); height: 75%; border-bottom: 1px solid #333;"></div>
+            <div class="page-content text-content" style="padding: 20px; background: #111;">
                 <p class="legal-text">
-                    <strong>[FR] AVIS IMPORTANT :</strong> Ce véhicule d'occasion est vendu de particulier à particulier, dans l'état bien connu de l'acheteur. Conformément à la législation européenne, le vendeur n'accorde aucune garantie personnelle, légale ou commerciale, et décline toute responsabilité pour les vices cachés. Le véhicule bénéficie exclusivement de la garantie constructeur "Toyota Relax" (jusqu'en 2033 sous réserve des entretiens officiels). Les descriptions de cette annonce sont données à titre indicatif.<br><br>
-                    <strong>[EN] IMPORTANT NOTICE:</strong> This used vehicle is sold by a private individual to a private individual, as-is. The seller provides no personal, legal, or commercial warranty, and disclaims all liability for hidden defects. The vehicle exclusively benefits from the "Toyota Relax" manufacturer's warranty.
+                    <strong>AVIS IMPORTANT :</strong> Ce véhicule d'occasion est vendu de particulier à particulier, dans l'état bien connu de l'acheteur. Conformément à la législation européenne, le vendeur n'accorde aucune garantie personnelle, légale ou commerciale, et décline toute responsabilité pour les vices cachés. Le véhicule bénéficie exclusivement de la garantie constructeur "Toyota Relax".
                 </p>
             </div>
         </div>
@@ -241,16 +311,17 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const pageFlip = new St.PageFlip(document.getElementById('flipbook'), {
-                width: 400, // base page width
-                height: 600, // base page height
+                width: 450, // base page width
+                height: 650, // base page height
                 size: "fixed",
-                minWidth: 400,
-                maxWidth: 400,
-                minHeight: 600,
-                maxHeight: 600,
+                minWidth: 450,
+                maxWidth: 450,
+                minHeight: 650,
+                maxHeight: 650,
                 maxShadowOpacity: 0.5,
                 showCover: true,
-                mobileScrollSupport: false
+                mobileScrollSupport: false,
+                usePortrait: false
             });
 
             pageFlip.loadFromHTML(document.querySelectorAll('.page'));

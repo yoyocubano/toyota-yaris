@@ -6,249 +6,87 @@
     <title>Toyota Yaris Hybrid Style - Édition Prestige</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             background: radial-gradient(circle at center, #2a2a2a 0%, #000000 100%);
             font-family: 'Montserrat', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #1a1a1a;
-            overflow: hidden;
-            perspective: 1200px;
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; color: #1a1a1a; overflow: hidden; perspective: 1500px;
         }
 
         .flip-book {
-            width: 900px;
-            height: 650px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 50px rgba(0,0,0,0.5);
+            width: 900px; height: 650px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(0,0,0,0.5);
             background: #fff;
         }
 
         .page {
-            background-color: #fdfbf7;
-            color: #1a1a1a;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            background-color: #fcfaf5;
+            color: #1a1a1a; overflow: hidden; display: flex; flex-direction: column;
             position: relative;
-            background-image: linear-gradient(120deg, transparent 90%, rgba(0,0,0,0.02) 100%);
+            background-image: linear-gradient(120deg, transparent 90%, rgba(0,0,0,0.03) 100%);
         }
 
-        /* Shadow to simulate page fold */
         .page::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 20px;
-            background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%);
-            z-index: 10;
-            pointer-events: none;
+            content: ''; position: absolute; top: 0; bottom: 0; width: 30px;
+            background: linear-gradient(to right, rgba(0,0,0,0.18) 0%, transparent 100%);
+            z-index: 10; pointer-events: none;
         }
-        .page:nth-child(even)::before { right: 0; background: linear-gradient(to left, rgba(0,0,0,0.15) 0%, transparent 100%); }
-        .page:nth-child(odd)::before { left: 0; background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%); }
+        .page:nth-child(even)::before { right: 0; background: linear-gradient(to left, rgba(0,0,0,0.18) 0%, transparent 100%); }
+        .page:nth-child(odd)::before { left: 0; background: linear-gradient(to right, rgba(0,0,0,0.18) 0%, transparent 100%); }
 
         .page.--hard {
             background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
-            color: white;
-            border: solid 2px #d4af37;
+            color: white; border: solid 2px #d4af37;
         }
 
         .page-content {
-            padding: 40px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            z-index: 2;
-            position: relative;
+            padding: 35px; height: 100%; display: flex; flex-direction: column;
+            z-index: 2; position: relative;
         }
 
-        /* Image Helpers - Fixed bugs with cutoffs */
-        .img-contain {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background-color: #000; /* Letterboxing to blend with image edges */
-        }
+        .img-contain { width: 100%; height: 100%; object-fit: contain; background-color: #000; }
+        .img-cover { width: 100%; height: 100%; object-fit: cover; }
+        .bg-image-half { width: 100%; height: 45%; background-size: cover; background-position: center; border-bottom: 2px solid #d4af37; }
+        .bg-image-top { width: 100%; height: 50%; background-size: cover; background-position: center; border-bottom: 2px solid #d4af37; }
+        .bg-banner { width: 100%; height: 35%; background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #111; }
+
+        .text-content { flex: 1; padding: 25px 20px; }
         
-        .img-cover {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .dark-theme { background-color: #111; color: #fff; }
+        .dark-theme h2 { color: #fff; border-bottom-color: #d4af37; }
+        .dark-theme p { color: #ccc; }
 
-        .bg-image-half {
-            width: 100%;
-            height: 45%;
-            background-size: cover;
-            background-position: center;
-            border-bottom: 2px solid #d4af37;
-        }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #d4af37; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #1a1a1a; margin-bottom: 15px; letter-spacing: 1px; border-bottom: 1px solid #d4af37; padding-bottom: 8px; display: inline-block; }
+        h3 { font-size: 0.85rem; margin-bottom: 12px; color: #777; text-transform: uppercase; letter-spacing: 2px; }
+        p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; color: #333; text-align: justify; }
 
-        .bg-banner {
-            width: 100%;
-            height: 35%;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-color: #111;
-        }
-
-        .text-content {
-            flex: 1;
-            padding: 25px 20px;
-        }
-
-        h1 { 
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem; 
-            color: #d4af37;
-            margin-bottom: 10px; 
-            text-transform: uppercase; 
-            letter-spacing: 4px;
-            font-weight: 700;
-        }
-        
-        h2 { 
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem; 
-            color: #1a1a1a; 
-            margin-bottom: 15px; 
-            letter-spacing: 1px;
-            border-bottom: 1px solid #d4af37;
-            padding-bottom: 8px;
-            display: inline-block;
-        }
-        
-        h3 { 
-            font-size: 0.85rem; 
-            margin-bottom: 12px; 
-            color: #777; 
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        p { 
-            font-size: 0.95rem; 
-            line-height: 1.6; 
-            margin-bottom: 15px; 
-            color: #333;
-            text-align: justify;
-        }
-
-        /* Cover Styles */
-        .cover {
-            text-align: center;
-            justify-content: center;
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(17,17,17,0.9)), url('assets/img2.png');
-            background-size: cover;
-            background-position: center;
-        }
-
+        .cover { text-align: center; justify-content: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(17,17,17,0.9)), url('assets/img2.png'); background-size: cover; background-position: center; }
         .cover h1 { text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
+        .cover .subtitle { font-family: 'Montserrat', sans-serif; color: #fff; font-size: 1.1rem; letter-spacing: 3px; font-weight: 300; text-transform: uppercase; }
+        .badge { display: inline-block; background: transparent; color: #d4af37; border: 1px solid #d4af37; padding: 10px 25px; font-weight: 300; font-size: 0.85rem; margin-top: 25px; letter-spacing: 2px; text-transform: uppercase; }
 
-        .cover .subtitle {
-            font-family: 'Montserrat', sans-serif;
-            color: #fff;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            font-weight: 300;
-            text-transform: uppercase;
-        }
-
-        .badge {
-            display: inline-block;
-            background: transparent;
-            color: #d4af37;
-            border: 1px solid #d4af37;
-            padding: 10px 25px;
-            font-weight: 300;
-            font-size: 0.85rem;
-            margin-top: 25px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* List & Buttons */
         .specs-list { list-style: none; margin-top: 20px; }
-        .specs-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            font-size: 0.95rem;
-            display: flex;
-            justify-content: space-between;
-        }
-        .specs-list strong {
-            color: #1a1a1a;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-        }
+        .specs-list li { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.1); font-size: 0.95rem; display: flex; justify-content: space-between; }
+        .specs-list strong { color: #1a1a1a; font-family: 'Playfair Display', serif; font-size: 1.1rem; }
 
-        .cta-box {
-            background: #111;
-            padding: 25px;
-            text-align: center;
-            margin-top: 25px;
-            border: 1px solid #d4af37;
-        }
-
-        .cta-box h3 {
-            color: #d4af37;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            font-family: 'Playfair Display', serif;
-        }
-
+        .cta-box { background: #111; padding: 25px; text-align: center; margin-top: 25px; border: 1px solid #d4af37; }
+        .cta-box h3 { color: #d4af37; font-size: 2.2rem; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
         .cta-box p { color: #ccc; text-align: center; margin-bottom: 5px; }
+        .cta-box a { display: inline-block; background: #d4af37; color: #111; text-decoration: none; padding: 12px 30px; font-weight: 600; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border-radius: 2px; }
+        .cta-box a:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
 
-        .cta-box a {
-            display: inline-block;
-            background: #d4af37;
-            color: #111;
-            text-decoration: none;
-            padding: 12px 30px;
-            font-weight: 600;
-            margin-top: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            border-radius: 2px;
-        }
-        .cta-box a:hover { 
-            background: #fff; 
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
-
-        .legal-text {
-            font-size: 0.7rem;
-            color: #888;
-            line-height: 1.5;
-            text-align: justify;
-            font-family: 'Helvetica', sans-serif;
-            background: #111;
-            padding: 20px;
-            border-top: 1px solid #333;
-        }
-
-        .page-number {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.85rem;
-            color: #d4af37;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-        }
+        .legal-text { font-size: 0.7rem; color: #888; line-height: 1.5; text-align: justify; font-family: 'Helvetica', sans-serif; background: #111; padding: 20px; border-top: 1px solid #333; }
+        
+        .page-number { position: absolute; bottom: 20px; font-size: 0.85rem; color: #d4af37; font-family: 'Playfair Display', serif; font-style: italic; }
         .page:nth-child(even) .page-number { left: 25px; }
         .page:nth-child(odd) .page-number { right: 25px; }
+
+        .full-bg { width: 100%; height: 100%; background-size: cover; background-position: center; display: flex; align-items: flex-end; }
+        .caption-box { background: rgba(0,0,0,0.8); padding: 20px; border-top: 2px solid #d4af37; width: 100%; }
+        .caption-box h2 { color: #d4af37; border: none; margin: 0 0 5px 0; font-size: 1.4rem; }
+        .caption-box p { color: #fff; margin: 0; font-size: 0.9rem; }
 
     </style>
 </head>
@@ -268,6 +106,7 @@
         <!-- PAGE 2: Full Infographic 1 (img5) -->
         <div class="page" style="padding: 0; background: #000;">
             <img src="assets/img5.png" class="img-contain" alt="Infographic Toyota Yaris" />
+            <div class="page-number" style="color:#fff;">2</div>
         </div>
 
         <!-- PAGE 3: Economy Banner + Text -->
@@ -285,9 +124,10 @@
         <!-- PAGE 4: Premium Interior (img4) -->
         <div class="page">
             <div class="page-content text-content">
-                <h2>La Tranquillité d'Esprit</h2>
+                <h2>Tranquillité d'Esprit</h2>
                 <h3>Sécurité & Confort Premium</h3>
-                <p><strong>[FR]</strong> Toyota est mondialement reconnu pour sa fiabilité absolue. Équipée de série du <em>Toyota Safety Sense</em> (freinage d'urgence, maintien de voie), elle veille sur vous en permanence. L'intérieur vous accueille avec des matériaux premium et une connectivité Apple CarPlay totale.</p>
+                <p><strong>[FR]</strong> Toyota est mondialement reconnu pour sa fiabilité absolue. Équipée de série du <em>Toyota Safety Sense</em> (freinage d'urgence, maintien de voie), elle veille sur vous en permanence.</p>
+                <p>L'intérieur vous accueille avec des matériaux premium, des sièges enveloppants et une connectivité Apple CarPlay totale.</p>
             </div>
             <div class="bg-image-half" style="background-image: url('assets/img4.png'); border-bottom: none; border-top: 2px solid #d4af37;"></div>
             <div class="page-number">4</div>
@@ -296,48 +136,146 @@
         <!-- PAGE 5: Full Infographic 2 (img6) -->
         <div class="page" style="padding: 0; background: #000;">
             <img src="assets/img6.png" class="img-contain" alt="Détails Techniques Yaris" />
+            <div class="page-number" style="color:#fff;">5</div>
         </div>
 
-        <!-- PAGE 6: Lifestyle / Exterior (img7) -->
-        <div class="page">
-            <div class="bg-image-half" style="background-image: url('assets/img7.png');"></div>
+        <!-- PAGE 6: Hybrid Synergy Drive (img9) -->
+        <div class="page dark-theme">
+            <div class="bg-image-half" style="background-image: url('assets/img9.png');"></div>
             <div class="page-content text-content">
-                <h2>Design & Caractère</h2>
-                <h3>Finition "Style" Bi-Ton</h3>
-                <p><strong>[FR]</strong> Ne passez plus inaperçu. Avec sa peinture bi-ton exclusive, ses jantes en alliage 17 pouces et sa signature lumineuse Full LED, cette édition Style allie sportivité et élégance. Son format compact la rend imbattable en ville.</p>
-                <p><strong>[EN]</strong> Stand out from the crowd. With its exclusive bi-tone paint, 17-inch alloy wheels, and Full LED lighting signature, this Style edition perfectly blends sportiness and elegance.</p>
+                <h2>Le Cœur Hybride</h2>
+                <h3 style="color:#d4af37;">Toyota Synergy Drive</h3>
+                <p>L'innovation Toyota à son apogée. Le système hybride de 4ème génération (116 ch / 85 kW) combine un moteur essence 1.5L ultra-efficient avec un moteur électrique puissant.</p>
+                <p>Résultat : Des démarrages vifs, une consommation record (approx. 3.8L/100km) et des émissions de CO2 minimales. La batterie se recharge toute seule lors des freinages et décélérations.</p>
             </div>
             <div class="page-number">6</div>
         </div>
 
-        <!-- PAGE 7: Pricing & Specs -->
+        <!-- PAGE 7: Eco Lifestyle (img10) -->
         <div class="page">
-            <div class="page-content text-content" style="padding-top: 20px;">
-                <h2 style="margin-bottom: 10px;">Fiche Technique</h2>
-                <ul class="specs-list">
-                    <li><span>Kilométrage / Mileage</span> <strong>38 494 km</strong></li>
-                    <li><span>Moteur / Engine</span> <strong>1.5 Hybrid 116 CV</strong></li>
-                    <li><span>Extérieur / Exterior</span> <strong>Gris Foncé & Toit Blanc</strong></li>
-                    <li><span>Disponibilité / Availability</span> <strong>Immédiate</strong></li>
-                </ul>
-
-                <div class="cta-box">
-                    <h3>21 900 €</h3>
-                    <p style="color: #d4af37; font-weight: 600; margin-bottom: 10px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Garantie Constructeur jusqu'en 2033*</p>
-                    <p style="font-size: 0.85rem;">Prêt(e) pour un essai ? / Ready for a test drive?</p>
-                    <a href="https://wa.me/352621430283" target="_blank">Contact WhatsApp</a>
-                </div>
+            <div class="page-content text-content">
+                <h2>Respect de l'Environnement</h2>
+                <h3>Un Style de Vie Durable</h3>
+                <p>Roulez en harmonie avec la nature. Les très faibles émissions (Label Euro 6) et la technologie d'auto-recharge font de la Yaris Hybrid le choix parfait pour les conducteurs soucieux de leur empreinte carbone, sans sacrifier le luxe ni le design architectural moderne de leur quotidien.</p>
             </div>
+            <div class="bg-image-half" style="background-image: url('assets/img10.png'); border-bottom: none; border-top: 2px solid #d4af37;"></div>
             <div class="page-number">7</div>
         </div>
 
-        <!-- PAGE 8: BACK COVER (Infographic 3 img3 + Legal) -->
+        <!-- PAGE 8: LED Headlights (img8) -->
+        <div class="page" style="padding: 0;">
+            <div class="full-bg" style="background-image: url('assets/img8.png');">
+                <div class="caption-box">
+                    <h2>Signature Lumineuse</h2>
+                    <p>Phares Full LED & Visibilité Nocturne Exceptionnelle</p>
+                </div>
+            </div>
+            <div class="page-number" style="color:#fff;">8</div>
+        </div>
+
+        <!-- PAGE 9: Premium Connectivity (img11) -->
+        <div class="page dark-theme">
+            <div class="bg-image-half" style="background-image: url('assets/img11.png'); border-bottom: 2px solid #d4af37;"></div>
+            <div class="page-content text-content">
+                <h2>Contrôle Total</h2>
+                <h3 style="color:#d4af37;">Application MyToyota</h3>
+                <p>Votre voiture dans votre poche. Contrôlez la climatisation à distance avant même d'entrer dans le véhicule. Vérifiez le verrouillage des portes, analysez vos données de conduite hybride et planifiez vos entretiens directement depuis votre smartphone.</p>
+            </div>
+            <div class="page-number">9</div>
+        </div>
+
+        <!-- PAGE 10: Lifestyle / Exterior (img7) -->
+        <div class="page">
+            <div class="page-content text-content">
+                <h2>Design Bi-Ton</h2>
+                <h3>Finition "Style"</h3>
+                <p><strong>[FR]</strong> Ne passez plus inaperçu. Avec sa peinture bi-ton exclusive (Gris Foncé et Toit Blanc) et ses jantes en alliage 17 pouces, cette édition allie sportivité et élégance.</p>
+                <p>Son format compact et ses lignes aérodynamiques la rendent imbattable en ville.</p>
+            </div>
+            <div class="bg-image-half" style="background-image: url('assets/img7.png'); border-top: 2px solid #d4af37; border-bottom: none;"></div>
+            <div class="page-number">10</div>
+        </div>
+
+        <!-- PAGE 11: Toyota Relax -->
+        <div class="page">
+            <div class="page-content text-content" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                <div style="width: 120px; height: 120px; border: 3px solid #d4af37; border-radius: 50%; display:flex; justify-content:center; align-items:center; margin-bottom: 30px;">
+                    <h1 style="font-size: 2rem; margin:0;">10</h1>
+                </div>
+                <h2>Garantie Toyota Relax</h2>
+                <h3>Tranquillité jusqu'en 2033</h3>
+                <p style="text-align: center; margin-top:20px;">
+                    En effectuant votre entretien annuel dans le réseau officiel Toyota, votre garantie est automatiquement prolongée d'un an, et ce jusqu'aux 10 ans de la voiture (ou 200 000 km).
+                </p>
+                <p style="text-align: center; font-weight: 600; color: #111;">
+                    La batterie hybride bénéficie également d'une couverture complète. Roulez l'esprit léger.
+                </p>
+            </div>
+            <div class="page-number">11</div>
+        </div>
+
+        <!-- PAGE 12: Agilité Urbaine -->
+        <div class="page dark-theme">
+            <div class="page-content text-content" style="display:flex; flex-direction:column; justify-content:center;">
+                <h2>Agilité Urbaine</h2>
+                <h3 style="color:#d4af37;">Architecture TNGA-B</h3>
+                <p>Construite sur la plateforme globale TNGA (Toyota New Global Architecture), cette Yaris offre un centre de gravité abaissé et une rigidité de caisse exceptionnelle.</p>
+                <p>Le résultat ? Une maniabilité hors pair dans les rues étroites, un confort de suspension digne du segment supérieur, et un plaisir de conduite dynamique sur les routes sinueuses. La boîte de vitesses automatique e-CVT assure une fluidité totale sans aucun à-coup.</p>
+            </div>
+            <div class="page-number">12</div>
+        </div>
+
+        <!-- PAGE 13: Espace et Confort -->
+        <div class="page">
+            <div class="page-content text-content" style="display:flex; flex-direction:column; justify-content:center;">
+                <h2>Espace Intelligemment Repensé</h2>
+                <h3>Confort & Modularité</h3>
+                <p>Malgré ses dimensions compactes à l'extérieur (3,94 m de long), l'espace intérieur a été maximisé pour offrir un dégagement généreux aux épaules et à la tête.</p>
+                <p>Le coffre modulable de 286 litres s'adapte à vos besoins quotidiens, que ce soit pour les courses, l'équipement sportif ou les bagages de week-end. Les sièges avant chauffants (selon finition) et la climatisation bi-zone garantissent un confort thermique parfait pour chaque occupant.</p>
+            </div>
+            <div class="page-number">13</div>
+        </div>
+
+        <!-- PAGE 14: Tech Specs (Text) -->
+        <div class="page dark-theme">
+            <div class="page-content text-content">
+                <h2>Spécifications Détaillées</h2>
+                <ul class="specs-list" style="color: #fff;">
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Motorisation</span> <strong style="color:#fff;">1.5L Hybride e-CVT</strong></li>
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Puissance Combinée</span> <strong style="color:#fff;">116 ch (85 kW)</strong></li>
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">0 à 100 km/h</span> <strong style="color:#fff;">9.7 secondes</strong></li>
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Conso. Mixte (WLTP)</span> <strong style="color:#fff;">3.8 - 4.3 L/100km</strong></li>
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Émissions CO2</span> <strong style="color:#fff;">87 - 98 g/km</strong></li>
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Volume du coffre</span> <strong style="color:#fff;">286 Litres</strong></li>
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Poids à vide</span> <strong style="color:#fff;">1090 kg</strong></li>
+                </ul>
+            </div>
+            <div class="page-number">14</div>
+        </div>
+
+        <!-- PAGE 15: Pricing & CTA -->
+        <div class="page">
+            <div class="page-content text-content" style="display:flex; flex-direction:column; justify-content:center;">
+                <h2 style="margin-bottom: 20px; text-align:center; display:block;">Prêt(e) à prendre le volant ?</h2>
+                
+                <div class="cta-box" style="margin-top:0;">
+                    <h3 style="font-size: 3rem;">21 900 €</h3>
+                    <p style="color: #d4af37; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">État Comme Neuf - 38 494 km</p>
+                    <p style="font-size: 0.9rem; color:#fff;">Ne laissez pas passer cette opportunité unique.</p>
+                    <a href="https://wa.me/352621430283" target="_blank" style="padding: 15px 40px; font-size: 1.1rem; margin-top:25px;">Contact WhatsApp</a>
+                    <p style="font-size: 0.8rem; margin-top: 15px;">Email: yucolaguilar@gmail.com</p>
+                </div>
+            </div>
+            <div class="page-number">15</div>
+        </div>
+
+        <!-- PAGE 16: BACK COVER (img3 + Legal) -->
         <div class="page --hard" style="padding: 0; display: flex; flex-direction: column;">
             <div style="flex: 1; background: #000; overflow: hidden;">
                 <img src="assets/img3.png" class="img-contain" style="padding: 10px;" alt="Résumé Complet" />
             </div>
             <div class="legal-text">
-                <strong>AVIS IMPORTANT :</strong> Ce véhicule d'occasion est vendu de particulier à particulier, dans l'état bien connu de l'acheteur. Conformément à la législation, le vendeur décline toute garantie légale supplémentaire, l'acheteur s'appuyant exclusivement sur la garantie constructeur "Toyota Relax" transférable.
+                <strong>AVIS IMPORTANT :</strong> Ce véhicule d'occasion est vendu de particulier à particulier, dans l'état bien connu de l'acheteur. Conformément à la législation européenne, le vendeur n'accorde aucune garantie personnelle, légale ou commerciale, et décline toute responsabilité pour les vices cachés. Le véhicule bénéficie exclusivement de la garantie constructeur "Toyota Relax".
             </div>
         </div>
 

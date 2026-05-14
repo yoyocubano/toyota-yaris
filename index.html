@@ -50,30 +50,32 @@
         .bg-image-half { width: 100%; height: 45%; background-size: cover; background-position: center; border-bottom: 2px solid #d4af37; }
         .bg-banner { width: 100%; height: 35%; background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #111; }
 
-        .text-content { flex: 1; padding: 25px 20px; }
+        .text-content { flex: 1; padding: 20px 20px 10px 20px; overflow-y: auto; }
+        .text-content::-webkit-scrollbar { width: 4px; }
+        .text-content::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.5); }
         
         .dark-theme { background-color: #111; color: #fff; }
         .dark-theme h2 { color: #fff; border-bottom-color: #d4af37; }
         .dark-theme p { color: #ccc; }
 
         h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #d4af37; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; text-align: center; }
-        h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #1a1a1a; margin-bottom: 15px; letter-spacing: 1px; border-bottom: 1px solid #d4af37; padding-bottom: 8px; display: inline-block; }
-        h3 { font-size: 0.85rem; margin-bottom: 12px; color: #777; text-transform: uppercase; letter-spacing: 2px; }
-        p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; color: #333; text-align: justify; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #1a1a1a; margin-bottom: 15px; letter-spacing: 1px; border-bottom: 1px solid #d4af37; padding-bottom: 5px; display: inline-block; }
+        h3 { font-size: 0.8rem; margin-bottom: 10px; color: #777; text-transform: uppercase; letter-spacing: 2px; }
+        p { font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; color: #333; text-align: justify; }
 
         .badge { display: inline-block; background: transparent; color: #d4af37; border: 1px solid #d4af37; padding: 10px 25px; font-weight: 300; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; }
 
-        .specs-list { list-style: none; margin-top: 20px; }
-        .specs-list li { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.1); font-size: 0.95rem; display: flex; justify-content: space-between; }
-        .specs-list strong { color: #1a1a1a; font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+        .specs-list { list-style: none; margin-top: 10px; }
+        .specs-list li { padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.1); font-size: 0.85rem; display: flex; justify-content: space-between; }
+        .specs-list strong { color: #1a1a1a; font-family: 'Playfair Display', serif; font-size: 1rem; }
 
-        .cta-box { background: #111; padding: 25px; text-align: center; margin-top: 25px; border: 1px solid #d4af37; }
-        .cta-box h3 { color: #d4af37; font-size: 2.2rem; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
+        .cta-box { background: #111; padding: 25px; text-align: center; margin-top: 15px; border: 1px solid #d4af37; }
+        .cta-box h3 { color: #d4af37; font-size: 2rem; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
         .cta-box p { color: #ccc; text-align: center; margin-bottom: 5px; }
-        .cta-box a { display: inline-block; background: #d4af37; color: #111; text-decoration: none; padding: 12px 30px; font-weight: 600; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border-radius: 2px; }
+        .cta-box a { display: inline-block; background: #d4af37; color: #111; text-decoration: none; padding: 10px 25px; font-weight: 600; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border-radius: 2px; font-size: 0.9rem;}
         .cta-box a:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
 
-        .legal-text { font-size: 0.7rem; color: #888; line-height: 1.5; text-align: justify; font-family: 'Helvetica', sans-serif; background: #111; padding: 10px 20px; border-top: 1px solid #333; }
+        .legal-text { font-size: 0.65rem; color: #888; line-height: 1.4; text-align: justify; font-family: 'Helvetica', sans-serif; background: #111; padding: 10px 20px; border-top: 1px solid #333; }
         
         .page-number { position: absolute; bottom: 15px; font-size: 0.85rem; color: #d4af37; font-family: 'Playfair Display', serif; font-style: italic; z-index: 5; }
         .page:nth-child(even) .page-number { left: 25px; }
@@ -84,43 +86,24 @@
         .caption-box h2 { color: #d4af37; border: none; margin: 0 0 5px 0; font-size: 1.4rem; }
         .caption-box p { color: #fff; margin: 0; font-size: 0.9rem; }
 
-        /* Sticker to cover the 22000 euro error in the infographics */
         .price-sticker {
-            position: absolute;
-            bottom: 30px;
-            left: 20px;
-            background: #d32f2f;
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            padding: 8px 18px;
-            font-size: 1.4rem;
-            transform: rotate(-6deg);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.6);
-            border: 3px solid #fff;
-            border-radius: 4px;
-            z-index: 20;
-            letter-spacing: 1px;
-            pointer-events: none;
-            white-space: nowrap;
+            position: absolute; bottom: 30px; left: 20px; background: #d32f2f; color: #fff;
+            font-family: 'Montserrat', sans-serif; font-weight: 800; padding: 8px 18px;
+            font-size: 1.4rem; transform: rotate(-6deg); box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+            border: 3px solid #fff; border-radius: 4px; z-index: 20; letter-spacing: 1px;
+            pointer-events: none; white-space: nowrap;
         }
 
-        .cover-top {
-            height: 25%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; background: #111; padding-bottom: 20px;
-        }
-        .cover-mid {
-            height: 55%; width: 100%; background-image: url('assets/img2.png'); background-size: cover; background-position: center; border-top: 2px solid #d4af37; border-bottom: 2px solid #d4af37;
-        }
-        .cover-bot {
-            height: 20%; background: #111; display: flex; justify-content: center; align-items: center;
-        }
+        .cover-top { height: 25%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; background: #111; padding-bottom: 20px; }
+        .cover-mid { height: 55%; width: 100%; background-image: url('assets/img2.png'); background-size: cover; background-position: center; border-top: 2px solid #d4af37; border-bottom: 2px solid #d4af37; }
+        .cover-bot { height: 20%; background: #111; display: flex; justify-content: center; align-items: center; }
     </style>
 </head>
 <body>
 
     <div class="flip-book" id="flipbook">
         
-        <!-- PAGE 1: COVER (Fixed Layout) -->
+        <!-- PAGE 1: COVER -->
         <div class="page --hard" style="padding:0;">
             <div class="cover-top">
                 <h1 style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">TOYOTA YARIS</h1>
@@ -144,7 +127,7 @@
             <div class="bg-banner" style="background-image: url('assets/img1.png');"></div>
             <div class="page-content text-content">
                 <h2>L'Économie à l'État Pur</h2>
-                <h3>Technologie Hybride Auto-rechargeable</h3>
+                <h3>Hybride Auto-rechargeable</h3>
                 <p><strong>[FR]</strong> Oubliez les pleins coûteux. Grâce à sa motorisation hybride innovante, cette Yaris roule jusqu'à 50% du temps en mode 100% électrique lors de vos trajets urbains. Une conduite fluide, silencieuse, et incroyablement économique.</p>
                 <p><strong>[EN]</strong> Forget expensive refueling. Thanks to its innovative hybrid engine, this Yaris drives up to 50% of the time in 100% electric mode during urban trips. Smooth, silent, and incredibly economical.</p>
             </div>
@@ -156,8 +139,8 @@
             <div class="page-content text-content">
                 <h2>Tranquillité d'Esprit</h2>
                 <h3>Sécurité & Confort Premium</h3>
-                <p><strong>[FR]</strong> Toyota est mondialement reconnu pour sa fiabilité absolue. Équipée de série du <em>Toyota Safety Sense</em> (freinage d'urgence, maintien de voie), elle veille sur vous en permanence.</p>
-                <p>L'intérieur vous accueille avec des matériaux premium, des sièges enveloppants et une connectivité Apple CarPlay totale.</p>
+                <p><strong>[FR]</strong> Équipée de série du <em>Toyota Safety Sense</em> (freinage d'urgence, maintien de voie), elle veille sur vous en permanence. L'intérieur vous accueille avec des matériaux premium et une connectivité Apple CarPlay.</p>
+                <p><strong>[EN]</strong> Equipped as standard with <em>Toyota Safety Sense</em> (emergency braking, lane keep assist), it watches over you constantly. The interior welcomes you with premium materials and Apple CarPlay connectivity.</p>
             </div>
             <div class="bg-image-half" style="background-image: url('assets/img4.png'); border-bottom: none; border-top: 2px solid #d4af37;"></div>
             <div class="page-number">4</div>
@@ -176,8 +159,8 @@
             <div class="page-content text-content">
                 <h2>Le Cœur Hybride</h2>
                 <h3 style="color:#d4af37;">Toyota Synergy Drive</h3>
-                <p>L'innovation Toyota à son apogée. Le système hybride de 4ème génération (116 ch / 85 kW) combine un moteur essence 1.5L ultra-efficient avec un moteur électrique puissant.</p>
-                <p>Résultat : Des démarrages vifs, une consommation record (approx. 3.8L/100km) et des émissions de CO2 minimales. La batterie se recharge toute seule lors des freinages et décélérations.</p>
+                <p><strong>[FR]</strong> L'innovation Toyota à son apogée. Le système hybride de 4ème génération combine un moteur essence 1.5L ultra-efficient avec un moteur électrique puissant. Consommation record et batterie auto-rechargeable.</p>
+                <p><strong>[EN]</strong> Toyota innovation at its peak. The 4th generation hybrid system combines an ultra-efficient 1.5L petrol engine with a powerful electric motor. Record fuel economy and self-charging battery.</p>
             </div>
             <div class="page-number">6</div>
         </div>
@@ -187,7 +170,8 @@
             <div class="page-content text-content">
                 <h2>Respect de l'Environnement</h2>
                 <h3>Un Style de Vie Durable</h3>
-                <p>Roulez en harmonie avec la nature. Les très faibles émissions (Label Euro 6) et la technologie d'auto-recharge font de la Yaris Hybrid le choix parfait pour les conducteurs soucieux de leur empreinte carbone, sans sacrifier le luxe ni le design architectural moderne de leur quotidien.</p>
+                <p><strong>[FR]</strong> Roulez en harmonie avec la nature. Les très faibles émissions (Euro 6) font de la Yaris Hybrid le choix parfait pour les conducteurs soucieux de leur empreinte carbone, sans sacrifier le luxe.</p>
+                <p><strong>[EN]</strong> Drive in harmony with nature. Very low emissions (Euro 6) make the Yaris Hybrid the perfect choice for eco-conscious drivers, without ever sacrificing luxury or style.</p>
             </div>
             <div class="bg-image-half" style="background-image: url('assets/img10.png'); border-bottom: none; border-top: 2px solid #d4af37;"></div>
             <div class="page-number">7</div>
@@ -210,7 +194,8 @@
             <div class="page-content text-content">
                 <h2>Contrôle Total</h2>
                 <h3 style="color:#d4af37;">Application MyToyota</h3>
-                <p>Votre voiture dans votre poche. Contrôlez la climatisation à distance avant même d'entrer dans le véhicule. Vérifiez le verrouillage des portes, analysez vos données de conduite hybride et planifiez vos entretiens directement depuis votre smartphone.</p>
+                <p><strong>[FR]</strong> Votre voiture dans votre poche. Contrôlez la climatisation à distance, vérifiez le verrouillage des portes et analysez vos trajets depuis votre smartphone.</p>
+                <p><strong>[EN]</strong> Your car in your pocket. Control the climate control remotely, check door locks, and analyze your driving data straight from your smartphone app.</p>
             </div>
             <div class="page-number">9</div>
         </div>
@@ -220,8 +205,8 @@
             <div class="page-content text-content">
                 <h2>Design Bi-Ton</h2>
                 <h3>Finition "Style"</h3>
-                <p><strong>[FR]</strong> Ne passez plus inaperçu. Avec sa peinture bi-ton exclusive (Gris Foncé et Toit Blanc) et ses jantes en alliage 17 pouces, cette édition allie sportivité et élégance.</p>
-                <p>Son format compact et ses lignes aérodynamiques la rendent imbattable en ville.</p>
+                <p><strong>[FR]</strong> Avec sa peinture bi-ton exclusive (Gris Foncé et Toit Blanc) et ses jantes alliage 17 pouces, cette édition allie sportivité et élégance urbaine.</p>
+                <p><strong>[EN]</strong> With its exclusive bi-tone paint (Dark Grey and White Roof) and 17-inch alloy wheels, this edition perfectly blends sportiness and urban elegance.</p>
             </div>
             <div class="bg-image-half" style="background-image: url('assets/img7.png'); border-top: 2px solid #d4af37; border-bottom: none;"></div>
             <div class="page-number">10</div>
@@ -229,18 +214,14 @@
 
         <!-- PAGE 11: Toyota Relax -->
         <div class="page">
-            <div class="page-content text-content" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-                <div style="width: 100px; height: 100px; border: 3px solid #d4af37; border-radius: 50%; display:flex; justify-content:center; align-items:center; margin-bottom: 25px;">
-                    <h1 style="font-size: 2.5rem; margin:0; padding-top: 5px;">10</h1>
+            <div class="page-content text-content" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                <div style="width: 80px; height: 80px; border: 3px solid #d4af37; border-radius: 50%; display:flex; justify-content:center; align-items:center; margin-bottom: 15px;">
+                    <h1 style="font-size: 2rem; margin:0; padding-top: 5px;">10</h1>
                 </div>
                 <h2>Garantie Toyota Relax</h2>
-                <h3>Tranquillité jusqu'en 2033</h3>
-                <p style="text-align: center; margin-top:20px;">
-                    En effectuant votre entretien annuel dans le réseau officiel Toyota, votre garantie est automatiquement prolongée d'un an, et ce jusqu'aux 10 ans de la voiture (ou 200 000 km).
-                </p>
-                <p style="text-align: center; font-weight: 600; color: #111;">
-                    La batterie hybride bénéficie également d'une couverture complète. Roulez l'esprit léger.
-                </p>
+                <h3>Tranquillité / Peace of Mind</h3>
+                <p><strong>[FR]</strong> En effectuant votre entretien annuel dans le réseau Toyota, votre garantie est prolongée d'un an, jusqu'aux 10 ans de la voiture (ou 200 000 km). La batterie hybride est incluse.</p>
+                <p><strong>[EN]</strong> By doing your annual service at a Toyota dealer, your warranty is extended by one year, up to 10 years (or 200,000 km). The hybrid battery is fully covered.</p>
             </div>
             <div class="page-number">11</div>
         </div>
@@ -250,8 +231,8 @@
             <div class="page-content text-content" style="display:flex; flex-direction:column; justify-content:center;">
                 <h2>Agilité Urbaine</h2>
                 <h3 style="color:#d4af37;">Architecture TNGA-B</h3>
-                <p>Construite sur la plateforme globale TNGA (Toyota New Global Architecture), cette Yaris offre un centre de gravité abaissé et une rigidité de caisse exceptionnelle.</p>
-                <p>Le résultat ? Une maniabilité hors pair dans les rues étroites, un confort de suspension digne du segment supérieur, et un plaisir de conduite dynamique sur les routes sinueuses. La boîte automatique e-CVT assure une fluidité totale.</p>
+                <p><strong>[FR]</strong> Construite sur la plateforme TNGA, cette Yaris offre un centre de gravité abaissé. Maniabilité hors pair en ville et plaisir dynamique sur route. Boîte automatique e-CVT super fluide.</p>
+                <p><strong>[EN]</strong> Built on the TNGA platform, this Yaris offers a lower center of gravity. Unmatched maneuverability in the city and dynamic joy on the road. Super smooth e-CVT automatic gearbox.</p>
             </div>
             <div class="page-number">12</div>
         </div>
@@ -259,10 +240,10 @@
         <!-- PAGE 13: Espace et Confort -->
         <div class="page">
             <div class="page-content text-content" style="display:flex; flex-direction:column; justify-content:center;">
-                <h2>Espace Intelligemment Repensé</h2>
-                <h3>Confort & Modularité</h3>
-                <p>Malgré ses dimensions compactes à l'extérieur (3,94 m de long), l'espace intérieur a été maximisé pour offrir un dégagement généreux aux épaules et à la tête.</p>
-                <p>Le coffre modulable de 286 litres s'adapte à vos besoins quotidiens, que ce soit pour les courses ou les bagages de week-end. Les sièges chauffants et la climatisation bi-zone garantissent un confort parfait.</p>
+                <h2>Espace Repensé</h2>
+                <h3>Confort & Modularité / Comfort</h3>
+                <p><strong>[FR]</strong> Malgré ses dimensions compactes, l'intérieur offre un dégagement généreux. Coffre modulable de 286L, sièges chauffants et climatisation bi-zone pour un confort parfait.</p>
+                <p><strong>[EN]</strong> Despite its compact dimensions, the interior offers generous headroom and legroom. 286L modular trunk, heated seats, and dual-zone climate control for perfect comfort.</p>
             </div>
             <div class="page-number">13</div>
         </div>
@@ -270,15 +251,15 @@
         <!-- PAGE 14: Tech Specs (Text) -->
         <div class="page dark-theme">
             <div class="page-content text-content">
-                <h2>Spécifications Détaillées</h2>
+                <h2>Spécifications / Specs</h2>
                 <ul class="specs-list" style="color: #fff;">
-                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Motorisation</span> <strong style="color:#fff;">1.5L Hybride e-CVT</strong></li>
-                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Puissance Combinée</span> <strong style="color:#fff;">116 ch (85 kW)</strong></li>
-                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">0 à 100 km/h</span> <strong style="color:#fff;">9.7 secondes</strong></li>
-                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Conso. Mixte (WLTP)</span> <strong style="color:#fff;">3.8 - 4.3 L/100km</strong></li>
-                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Émissions CO2</span> <strong style="color:#fff;">87 - 98 g/km</strong></li>
-                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Volume du coffre</span> <strong style="color:#fff;">286 Litres</strong></li>
-                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Poids à vide</span> <strong style="color:#fff;">1090 kg</strong></li>
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Moteur / Engine</span> <strong style="color:#fff;">1.5L Hybride e-CVT</strong></li>
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Puissance / Power</span> <strong style="color:#fff;">116 ch (85 kW)</strong></li>
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">0-100 km/h</span> <strong style="color:#fff;">9.7 sec</strong></li>
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Conso / Consumption</span> <strong style="color:#fff;">3.8 - 4.3 L/100km</strong></li>
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Émissions / CO2</span> <strong style="color:#fff;">87 - 98 g/km</strong></li>
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Coffre / Trunk</span> <strong style="color:#fff;">286 Litres</strong></li>
+                    <li style="border-bottom-color: #333;"><span style="color:#aaa;">Poids / Weight</span> <strong style="color:#fff;">1090 kg</strong></li>
                 </ul>
             </div>
             <div class="page-number">14</div>
@@ -287,14 +268,14 @@
         <!-- PAGE 15: Pricing & CTA -->
         <div class="page">
             <div class="page-content text-content" style="display:flex; flex-direction:column; justify-content:center;">
-                <h2 style="margin-bottom: 20px; text-align:center; display:block;">Prêt(e) à prendre le volant ?</h2>
+                <h2 style="margin-bottom: 20px; text-align:center; display:block;">Prêt(e) à prendre le volant ?<br><span style="font-size: 1.1rem; color: #777;">Ready to take the wheel?</span></h2>
                 
                 <div class="cta-box" style="margin-top:0;">
-                    <h3 style="font-size: 3rem;">21 900 €</h3>
-                    <p style="color: #d4af37; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">État Comme Neuf - 38 494 km</p>
-                    <p style="font-size: 0.9rem; color:#fff;">Ne laissez pas passer cette opportunité unique.</p>
-                    <a href="https://wa.me/352621430283" target="_blank" style="padding: 15px 40px; font-size: 1.1rem; margin-top:25px;">Contact WhatsApp</a>
-                    <p style="font-size: 0.8rem; margin-top: 15px;">Email: yucolaguilar@gmail.com</p>
+                    <h3 style="font-size: 2.5rem;">21 900 €</h3>
+                    <p style="color: #d4af37; font-weight: 600; margin-bottom: 10px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">État Comme Neuf - Condition: Like New</p>
+                    <p style="font-size: 0.85rem; color:#fff;">Ne laissez pas passer cette opportunité unique.<br>Don't miss this unique opportunity.</p>
+                    <a href="https://wa.me/352621430283" target="_blank">Contact WhatsApp</a>
+                    <p style="font-size: 0.75rem; margin-top: 15px;">Email: yucolaguilar@gmail.com</p>
                 </div>
             </div>
             <div class="page-number">15</div>
@@ -307,7 +288,7 @@
                 <div class="price-sticker" style="bottom: 20px;">NOUVEAU PRIX: 21 900 €</div>
             </div>
             <div class="legal-text">
-                <strong>AVIS IMPORTANT :</strong> Ce véhicule d'occasion est vendu de particulier à particulier, dans l'état bien connu de l'acheteur. Conformément à la législation européenne, le vendeur n'accorde aucune garantie personnelle, légale ou commerciale, et décline toute responsabilité pour les vices cachés. Le véhicule bénéficie exclusivement de la garantie constructeur "Toyota Relax".
+                <strong>AVIS IMPORTANT / DISCLAIMER :</strong> Ce véhicule d'occasion est vendu de particulier à particulier, dans l'état bien connu de l'acheteur. Le vendeur décline toute responsabilité pour les vices cachés. Le véhicule bénéficie de la garantie "Toyota Relax". / Sold as-is by private owner. The seller assumes no liability for hidden defects. Covered by transferable "Toyota Relax" warranty.
             </div>
         </div>
 
@@ -324,11 +305,11 @@
                 maxWidth: 450,
                 minHeight: 650,
                 maxHeight: 650,
-                maxShadowOpacity: 1, // Stronger shadow for 3D realism
+                maxShadowOpacity: 1,
                 showCover: true,
                 mobileScrollSupport: true,
                 usePortrait: false,
-                flippingTime: 1200, // Very smooth, slower book-like transition
+                flippingTime: 1200,
                 swipeDistance: 30
             });
 

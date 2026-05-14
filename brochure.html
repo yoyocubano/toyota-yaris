@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Brochure - Toyota Yaris Hybrid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* General A4 Print Styles */
+        body {
+            margin: 0; padding: 0;
+            background-color: #f4f4f4;
+            font-family: 'Montserrat', sans-serif;
+            color: #111;
+        }
+        
+        .page-wrapper {
+            width: 21cm;
+            height: 29.7cm;
+            margin: 1cm auto;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+            display: flex; flex-direction: column;
+        }
+
+        .dark { background: #111; color: #fff; }
+        .dark h1, .dark h2 { color: #d4af37; }
+        
+        .cover { justify-content: center; align-items: center; text-align: center; background: #111; }
+        .cover h1 { font-family: 'Playfair Display', serif; font-size: 4rem; color: #d4af37; letter-spacing: 5px; margin-bottom: 10px;}
+        .cover p { font-size: 1.5rem; letter-spacing: 3px; color: #fff; text-transform: uppercase; }
+        .cover-img { width: 100%; height: 50%; object-fit: cover; margin: 2cm 0; border-top: 5px solid #d4af37; border-bottom: 5px solid #d4af37;}
+
+        .content-page { padding: 2cm; display: flex; flex-direction: column; justify-content: center; }
+        .content-page h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; border-bottom: 2px solid #d4af37; padding-bottom: 10px; margin-bottom: 20px;}
+        .content-page h3 { font-size: 1.2rem; color: #777; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 2px;}
+        .content-page p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 15px; text-align: justify; }
+        .dark .content-page h3 { color: #aaa; }
+        .dark .content-page p { color: #ddd; }
+
+        .full-img-page { padding: 0; background: #000; display: flex; justify-content: center; align-items: center; position: relative;}
+        .full-img-page img { width: 100%; height: 100%; object-fit: contain; }
+
+        .half-img { width: 100%; height: 40%; object-fit: cover; border-bottom: 3px solid #d4af37; }
+
+        .specs-list { list-style: none; padding: 0; margin-top: 2cm; }
+        .specs-list li { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #444; font-size: 1.2rem; }
+        .specs-list strong { color: #d4af37; font-family: 'Playfair Display', serif; font-size: 1.4rem; }
+
+        .contact-box { background: #d4af37; color: #111; padding: 2cm; text-align: center; margin-top: auto; }
+        .contact-box h3 { font-size: 3rem; margin-bottom: 10px; font-family: 'Playfair Display', serif; color: #111;}
+        .contact-box p { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px;}
+
+        @media print {
+            body { background: #fff; margin: 0; padding: 0; }
+            .page-wrapper { margin: 0; box-shadow: none; border: none; }
+            .no-print { display: none; }
+        }
+
+        .print-btn {
+            position: fixed; top: 20px; right: 20px;
+            background: #d4af37; color: #111; padding: 15px 30px;
+            font-size: 1.2rem; font-weight: bold; font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase; letter-spacing: 1px; border: none;
+            cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-radius: 5px; z-index: 1000; transition: transform 0.2s;
+        }
+        .print-btn:hover { transform: scale(1.05); }
+
+    </style>
+</head>
+<body>
+
+    <button class="print-btn no-print" onclick="window.print()">🖨️ Sauvegarder en PDF</button>
+
+    <!-- Page 1: Cover -->
+    <div class="page-wrapper cover">
+        <h1 style="margin-top: 4cm;">TOYOTA YARIS</h1>
+        <p>1.5 Hybrid Style e-CVT</p>
+        <img src="assets/img2.png" class="cover-img" />
+        <p style="font-size: 1.2rem; font-weight: 300;">ÉDITION PRESTIGE</p>
+    </div>
+
+    <!-- Page 2: Infographic -->
+    <div class="page-wrapper full-img-page">
+        <img src="assets/img5.png" />
+    </div>
+
+    <!-- Page 3: Eco & Interior -->
+    <div class="page-wrapper content-page">
+        <img src="assets/img4.png" class="half-img" style="margin-bottom: 1cm;" />
+        <h2>Confort & Sécurité Premium</h2>
+        <h3>Tranquillité d'esprit absolue</h3>
+        <p><strong>[FR]</strong> Équipée de série du Toyota Safety Sense (freinage d'urgence, maintien de voie), elle veille sur vous en permanence. L'intérieur vous accueille avec des matériaux premium et une connectivité Apple CarPlay.</p>
+        <p><strong>[EN]</strong> Equipped as standard with Toyota Safety Sense, it watches over you constantly. The interior welcomes you with premium materials and full Apple CarPlay connectivity.</p>
+
+        <h2 style="margin-top: 1.5cm;">L'Économie à l'État Pur</h2>
+        <p>Oubliez les pleins coûteux. Grâce à sa motorisation hybride innovante, cette Yaris roule jusqu'à 50% du temps en mode 100% électrique lors de vos trajets urbains.</p>
+    </div>
+
+    <!-- Page 4: Infographic 2 -->
+    <div class="page-wrapper full-img-page">
+        <img src="assets/img6.png" />
+    </div>
+
+    <!-- Page 5: Hybrid & Lifestyle -->
+    <div class="page-wrapper content-page dark">
+        <img src="assets/img9.png" class="half-img" style="margin-bottom: 1cm;" />
+        <h2>Le Cœur Hybride</h2>
+        <h3>Toyota Synergy Drive</h3>
+        <p><strong>[FR]</strong> L'innovation Toyota à son apogée. Le système hybride de 4ème génération combine un moteur essence 1.5L ultra-efficient avec un moteur électrique puissant. Consommation record et batterie auto-rechargeable.</p>
+        
+        <h2 style="margin-top: 1.5cm;">Agilité Urbaine</h2>
+        <p>Construite sur la plateforme TNGA, cette Yaris offre un centre de gravité abaissé. Maniabilité hors pair en ville et plaisir dynamique sur route grâce à sa boîte automatique e-CVT super fluide.</p>
+    </div>
+
+    <!-- Page 6: Exterior & Design -->
+    <div class="page-wrapper content-page">
+        <img src="assets/img7.png" class="half-img" style="margin-bottom: 1cm;" />
+        <h2>Design Bi-Ton</h2>
+        <h3>Finition "Style" Exécutive</h3>
+        <p><strong>[FR]</strong> Avec sa peinture bi-ton exclusive (Gris Foncé et Toit Blanc) et ses jantes alliage 17", cette édition allie sportivité et élégance urbaine parfaite.</p>
+        <p><strong>[EN]</strong> With its exclusive bi-tone paint and 17-inch alloy wheels, this edition perfectly blends sportiness and urban elegance.</p>
+
+        <h2 style="margin-top: 1.5cm;">Signature Lumineuse</h2>
+        <p>Équipée de phares Full LED, elle offre une visibilité nocturne exceptionnelle tout en arborant une signature lumineuse agressive et résolument moderne.</p>
+    </div>
+
+    <!-- Page 7: Specs & Contact -->
+    <div class="page-wrapper content-page dark">
+        <h2>Spécifications Techniques</h2>
+        <ul class="specs-list">
+            <li><span>Moteur / Engine</span> <strong>1.5L Hybride e-CVT</strong></li>
+            <li><span>Puissance / Power</span> <strong>116 ch (85 kW)</strong></li>
+            <li><span>0-100 km/h</span> <strong>9.7 sec</strong></li>
+            <li><span>Conso Mixte / Consumption</span> <strong>3.8 - 4.3 L/100km</strong></li>
+            <li><span>Émissions CO2 / Emissions</span> <strong>87 - 98 g/km</strong></li>
+            <li><span>Volume Coffre / Trunk</span> <strong>286 Litres</strong></li>
+        </ul>
+
+        <div class="contact-box">
+            <h3 style="color: #111;">21 900 €</h3>
+            <p style="color: #111;">État Comme Neuf - 38 494 km</p>
+            <p style="color: #333; margin-top: 10px;">Garantie Toyota Relax (jusqu'en 2033)</p>
+            <p style="margin-top: 20px; font-size: 1rem; border-top: 1px solid #111; padding-top: 15px;">
+                Contact WhatsApp: +352 621 430 283<br>
+                Email: yucolaguilar@gmail.com
+            </p>
+        </div>
+    </div>
+
+    <!-- Page 8: Legal Infographic -->
+    <div class="page-wrapper full-img-page">
+        <img src="assets/img3.png" />
+    </div>
+
+</body>
+</html>

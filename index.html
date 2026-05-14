@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toyota Yaris Hybrid Style - Édition Prestige</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -48,7 +48,6 @@
         .img-contain { width: 100%; height: 100%; object-fit: contain; background-color: #000; }
         .img-cover { width: 100%; height: 100%; object-fit: cover; }
         .bg-image-half { width: 100%; height: 45%; background-size: cover; background-position: center; border-bottom: 2px solid #d4af37; }
-        .bg-image-top { width: 100%; height: 50%; background-size: cover; background-position: center; border-bottom: 2px solid #d4af37; }
         .bg-banner { width: 100%; height: 35%; background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #111; }
 
         .text-content { flex: 1; padding: 25px 20px; }
@@ -57,15 +56,12 @@
         .dark-theme h2 { color: #fff; border-bottom-color: #d4af37; }
         .dark-theme p { color: #ccc; }
 
-        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #d4af37; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #d4af37; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; text-align: center; }
         h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #1a1a1a; margin-bottom: 15px; letter-spacing: 1px; border-bottom: 1px solid #d4af37; padding-bottom: 8px; display: inline-block; }
         h3 { font-size: 0.85rem; margin-bottom: 12px; color: #777; text-transform: uppercase; letter-spacing: 2px; }
         p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; color: #333; text-align: justify; }
 
-        .cover { text-align: center; justify-content: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(17,17,17,0.9)), url('assets/img2.png'); background-size: cover; background-position: center; }
-        .cover h1 { text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
-        .cover .subtitle { font-family: 'Montserrat', sans-serif; color: #fff; font-size: 1.1rem; letter-spacing: 3px; font-weight: 300; text-transform: uppercase; }
-        .badge { display: inline-block; background: transparent; color: #d4af37; border: 1px solid #d4af37; padding: 10px 25px; font-weight: 300; font-size: 0.85rem; margin-top: 25px; letter-spacing: 2px; text-transform: uppercase; }
+        .badge { display: inline-block; background: transparent; color: #d4af37; border: 1px solid #d4af37; padding: 10px 25px; font-weight: 300; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; }
 
         .specs-list { list-style: none; margin-top: 20px; }
         .specs-list li { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.1); font-size: 0.95rem; display: flex; justify-content: space-between; }
@@ -77,9 +73,9 @@
         .cta-box a { display: inline-block; background: #d4af37; color: #111; text-decoration: none; padding: 12px 30px; font-weight: 600; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border-radius: 2px; }
         .cta-box a:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
 
-        .legal-text { font-size: 0.7rem; color: #888; line-height: 1.5; text-align: justify; font-family: 'Helvetica', sans-serif; background: #111; padding: 20px; border-top: 1px solid #333; }
+        .legal-text { font-size: 0.7rem; color: #888; line-height: 1.5; text-align: justify; font-family: 'Helvetica', sans-serif; background: #111; padding: 10px 20px; border-top: 1px solid #333; }
         
-        .page-number { position: absolute; bottom: 20px; font-size: 0.85rem; color: #d4af37; font-family: 'Playfair Display', serif; font-style: italic; }
+        .page-number { position: absolute; bottom: 15px; font-size: 0.85rem; color: #d4af37; font-family: 'Playfair Display', serif; font-style: italic; z-index: 5; }
         .page:nth-child(even) .page-number { left: 25px; }
         .page:nth-child(odd) .page-number { right: 25px; }
 
@@ -88,24 +84,58 @@
         .caption-box h2 { color: #d4af37; border: none; margin: 0 0 5px 0; font-size: 1.4rem; }
         .caption-box p { color: #fff; margin: 0; font-size: 0.9rem; }
 
+        /* Sticker to cover the 22000 euro error in the infographics */
+        .price-sticker {
+            position: absolute;
+            bottom: 30px;
+            left: 20px;
+            background: #d32f2f;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            padding: 8px 18px;
+            font-size: 1.4rem;
+            transform: rotate(-6deg);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+            border: 3px solid #fff;
+            border-radius: 4px;
+            z-index: 20;
+            letter-spacing: 1px;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .cover-top {
+            height: 25%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; background: #111; padding-bottom: 20px;
+        }
+        .cover-mid {
+            height: 55%; width: 100%; background-image: url('assets/img2.png'); background-size: cover; background-position: center; border-top: 2px solid #d4af37; border-bottom: 2px solid #d4af37;
+        }
+        .cover-bot {
+            height: 20%; background: #111; display: flex; justify-content: center; align-items: center;
+        }
     </style>
 </head>
 <body>
 
     <div class="flip-book" id="flipbook">
         
-        <!-- PAGE 1: COVER -->
-        <div class="page --hard">
-            <div class="page-content cover">
-                <h1>TOYOTA YARIS</h1>
-                <p class="subtitle">1.5 VVT-i Hybrid Style e-CVT</p>
-                <div class="badge">L'Élégance Sans Compromis</div>
+        <!-- PAGE 1: COVER (Fixed Layout) -->
+        <div class="page --hard" style="padding:0;">
+            <div class="cover-top">
+                <h1 style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">TOYOTA YARIS</h1>
+                <p style="font-family:'Montserrat', sans-serif; color:#fff; font-size:1rem; letter-spacing:3px; font-weight:300; text-transform:uppercase; margin:0;">1.5 Hybrid Style e-CVT</p>
+            </div>
+            <div class="cover-mid"></div>
+            <div class="cover-bot">
+                <div class="badge" style="margin: 0;">L'Élégance Sans Compromis</div>
             </div>
         </div>
 
-        <!-- PAGE 2: Full Infographic 1 (img5) -->
-        <div class="page" style="padding: 0; background: #000;">
+        <!-- PAGE 2: Full Infographic 1 (img5) + Sticker -->
+        <div class="page" style="padding: 0; background: #000; display:flex; justify-content:center; align-items:center;">
             <img src="assets/img5.png" class="img-contain" alt="Infographic Toyota Yaris" />
+            <div class="price-sticker">NOUVEAU PRIX: 21 900 €</div>
             <div class="page-number" style="color:#fff;">2</div>
         </div>
 
@@ -133,9 +163,10 @@
             <div class="page-number">4</div>
         </div>
 
-        <!-- PAGE 5: Full Infographic 2 (img6) -->
-        <div class="page" style="padding: 0; background: #000;">
+        <!-- PAGE 5: Full Infographic 2 (img6) + Sticker -->
+        <div class="page" style="padding: 0; background: #000; display:flex; justify-content:center; align-items:center;">
             <img src="assets/img6.png" class="img-contain" alt="Détails Techniques Yaris" />
+            <div class="price-sticker">NOUVEAU PRIX: 21 900 €</div>
             <div class="page-number" style="color:#fff;">5</div>
         </div>
 
@@ -199,8 +230,8 @@
         <!-- PAGE 11: Toyota Relax -->
         <div class="page">
             <div class="page-content text-content" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-                <div style="width: 120px; height: 120px; border: 3px solid #d4af37; border-radius: 50%; display:flex; justify-content:center; align-items:center; margin-bottom: 30px;">
-                    <h1 style="font-size: 2rem; margin:0;">10</h1>
+                <div style="width: 100px; height: 100px; border: 3px solid #d4af37; border-radius: 50%; display:flex; justify-content:center; align-items:center; margin-bottom: 25px;">
+                    <h1 style="font-size: 2.5rem; margin:0; padding-top: 5px;">10</h1>
                 </div>
                 <h2>Garantie Toyota Relax</h2>
                 <h3>Tranquillité jusqu'en 2033</h3>
@@ -220,7 +251,7 @@
                 <h2>Agilité Urbaine</h2>
                 <h3 style="color:#d4af37;">Architecture TNGA-B</h3>
                 <p>Construite sur la plateforme globale TNGA (Toyota New Global Architecture), cette Yaris offre un centre de gravité abaissé et une rigidité de caisse exceptionnelle.</p>
-                <p>Le résultat ? Une maniabilité hors pair dans les rues étroites, un confort de suspension digne du segment supérieur, et un plaisir de conduite dynamique sur les routes sinueuses. La boîte de vitesses automatique e-CVT assure une fluidité totale sans aucun à-coup.</p>
+                <p>Le résultat ? Une maniabilité hors pair dans les rues étroites, un confort de suspension digne du segment supérieur, et un plaisir de conduite dynamique sur les routes sinueuses. La boîte automatique e-CVT assure une fluidité totale.</p>
             </div>
             <div class="page-number">12</div>
         </div>
@@ -231,7 +262,7 @@
                 <h2>Espace Intelligemment Repensé</h2>
                 <h3>Confort & Modularité</h3>
                 <p>Malgré ses dimensions compactes à l'extérieur (3,94 m de long), l'espace intérieur a été maximisé pour offrir un dégagement généreux aux épaules et à la tête.</p>
-                <p>Le coffre modulable de 286 litres s'adapte à vos besoins quotidiens, que ce soit pour les courses, l'équipement sportif ou les bagages de week-end. Les sièges avant chauffants (selon finition) et la climatisation bi-zone garantissent un confort thermique parfait pour chaque occupant.</p>
+                <p>Le coffre modulable de 286 litres s'adapte à vos besoins quotidiens, que ce soit pour les courses ou les bagages de week-end. Les sièges chauffants et la climatisation bi-zone garantissent un confort parfait.</p>
             </div>
             <div class="page-number">13</div>
         </div>
@@ -269,10 +300,11 @@
             <div class="page-number">15</div>
         </div>
 
-        <!-- PAGE 16: BACK COVER (img3 + Legal) -->
-        <div class="page --hard" style="padding: 0; display: flex; flex-direction: column;">
-            <div style="flex: 1; background: #000; overflow: hidden;">
+        <!-- PAGE 16: BACK COVER (img3 + Sticker + Legal) -->
+        <div class="page --hard" style="padding: 0; display: flex; flex-direction: column; position:relative;">
+            <div style="flex: 1; background: #000; overflow: hidden; position:relative; display:flex; justify-content:center; align-items:center;">
                 <img src="assets/img3.png" class="img-contain" style="padding: 10px;" alt="Résumé Complet" />
+                <div class="price-sticker" style="bottom: 20px;">NOUVEAU PRIX: 21 900 €</div>
             </div>
             <div class="legal-text">
                 <strong>AVIS IMPORTANT :</strong> Ce véhicule d'occasion est vendu de particulier à particulier, dans l'état bien connu de l'acheteur. Conformément à la législation européenne, le vendeur n'accorde aucune garantie personnelle, légale ou commerciale, et décline toute responsabilité pour les vices cachés. Le véhicule bénéficie exclusivement de la garantie constructeur "Toyota Relax".
@@ -292,10 +324,12 @@
                 maxWidth: 450,
                 minHeight: 650,
                 maxHeight: 650,
-                maxShadowOpacity: 0.6,
+                maxShadowOpacity: 1, // Stronger shadow for 3D realism
                 showCover: true,
-                mobileScrollSupport: false,
-                usePortrait: false
+                mobileScrollSupport: true,
+                usePortrait: false,
+                flippingTime: 1200, // Very smooth, slower book-like transition
+                swipeDistance: 30
             });
 
             pageFlip.loadFromHTML(document.querySelectorAll('.page'));

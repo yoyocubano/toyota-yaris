@@ -55,9 +55,33 @@
 
         @media print {
             body { background: #fff; margin: 0; padding: 0; }
-            .page-wrapper { margin: 0; box-shadow: none; border: none; }
+            .page-wrapper { margin: 0; box-shadow: none; border: none; width: 21cm; height: 29.7cm; }
             .no-print { display: none; }
         }
+
+        /* Responsive Styles for Mobile */
+        @media screen and (max-width: 768px) {
+            .page-wrapper {
+                width: 100%;
+                height: auto;
+                min-height: 100vh;
+                margin: 0;
+                box-shadow: none;
+                border-bottom: 5px solid #111;
+            }
+            .cover h1 { font-size: 2.5rem; letter-spacing: 2px; }
+            .cover p { font-size: 1rem; }
+            .content-page { padding: 1.5rem; }
+            .content-page h2 { font-size: 1.8rem; }
+            .specs-list { margin-top: 1rem; }
+            .specs-list li { flex-direction: column; gap: 5px; font-size: 1rem; }
+            .specs-list strong { font-size: 1.2rem; }
+            .contact-box { padding: 1.5rem; margin-top: 2rem; }
+            .contact-box h3 { font-size: 2rem; }
+            .print-btn { bottom: 20px; top: auto; right: 20px; padding: 10px 20px; font-size: 1rem; }
+            .full-img-page video, .full-img-page img { height: 100vh; object-fit: cover; }
+        }
+
 
         .print-btn {
             position: fixed; top: 20px; right: 20px;
@@ -83,6 +107,11 @@
         <p style="font-size: 1.2rem; font-weight: 300;">ÉDITION PRESTIGE</p>
     </div>
 
+    <!-- Video Showcase 1 -->
+    <div class="page-wrapper full-img-page">
+        <video src="assets/video1.webm" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+    </div>
+
     <!-- Page 2: Infographic -->
     <div class="page-wrapper full-img-page">
         <img src="assets/img5.png" />
@@ -98,6 +127,11 @@
 
         <h2 style="margin-top: 1.5cm;">L'Économie à l'État Pur</h2>
         <p>Oubliez les pleins coûteux. Grâce à sa motorisation hybride innovante, cette Yaris roule jusqu'à 50% du temps en mode 100% électrique lors de vos trajets urbains.</p>
+    </div>
+
+    <!-- Video Showcase 2 -->
+    <div class="page-wrapper full-img-page">
+        <video src="assets/video2.webm" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
     </div>
 
     <!-- Page 4: Infographic 2 -->
@@ -126,6 +160,11 @@
 
         <h2 style="margin-top: 1.5cm;">Signature Lumineuse</h2>
         <p>Équipée de phares Full LED, elle offre une visibilité nocturne exceptionnelle tout en arborant une signature lumineuse agressive et résolument moderne.</p>
+    </div>
+
+    <!-- Video Showcase 3 -->
+    <div class="page-wrapper full-img-page">
+        <video src="assets/video3.webm" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
     </div>
 
     <!-- Page 7: Specs & Contact -->

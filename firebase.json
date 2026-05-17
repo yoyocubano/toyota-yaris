@@ -1,0 +1,25 @@
+{
+  "hosting": {
+    "site": "toyota-yaris-prestige",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "**/*.mp4",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000" }
+        ]
+      },
+      {
+        "source": "**/*.png",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000" }
+        ]
+      }
+    ]
+  }
+}

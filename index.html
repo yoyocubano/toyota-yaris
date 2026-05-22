@@ -150,6 +150,17 @@
         }
         .floating-pdf-btn:hover { background: #d4af37; color: #111; transform: scale(1.05); }
 
+        .floating-video-btn {
+            position: absolute; top: 20px; right: 20px; z-index: 100;
+            background: rgba(212, 175, 55, 0.15); color: #d4af37;
+            padding: 10px 15px; border: 1px solid #d4af37; border-radius: 4px;
+            text-decoration: none; font-weight: 600; font-size: 0.8rem;
+            text-transform: uppercase; letter-spacing: 1px; backdrop-filter: blur(5px);
+            transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.5), 0 0 8px rgba(212, 175, 55, 0.2);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .floating-video-btn:hover { background: #d4af37; color: #111; transform: scale(1.05); box-shadow: 0 8px 20px rgba(212,175,55,0.4); }
+
         /* Responsive Design for Mobile Devices */
         @media (max-width: 768px) {
             .container { padding: 0; }
@@ -212,6 +223,11 @@
     <a href="brochure.html" target="_blank" class="floating-pdf-btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
         Brochure PDF
+    </a>
+
+    <a href="ad.html" target="_blank" class="floating-video-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+        🎬 Spot Vidéo Ad
     </a>
 
     <div class="container">

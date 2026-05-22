@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Toyota Yaris Hybrid - Interactive Video Ad Hub</title>
+    
+    <!-- SEO & Preview Meta Tags -->
+    <meta property="og:title" content="TOYOTA YARIS HYBRID — Interactive Promo Center">
+    <meta property="og:description" content="Cinematic cuts, hybrid HUD diagnostics, and luxury bilingual sales presentation.">
+    <meta property="og:image" content="assets/toyota_yaris_ad_cover.png">
+    <meta property="og:url" content="https://yoyocubano.github.io/toyota-yaris/ad.html">
+    <meta property="og:type" content="website">
+
+    <!-- Premium Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --dark-bg: #0d0d0d;
+            --card-bg: rgba(20, 20, 20, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) #111;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d0d0d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 3px;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #1e1e1e 0%, #000000 100%);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Premium Header */
+        header {
+            width: 100%;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            background: rgba(13, 13, 13, 0.8);
+        }
+
+        .logo-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-block h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .logo-block span {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .btn-catalog {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--glass-border);
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-catalog:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        /* Layout Grid */
+        main {
+            flex: 1;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            gap: 40px;
+        }
+
+        /* Ad Player Section */
+        .ad-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .player-viewport {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border: 1px solid var(--gold);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 15px var(--gold-glow);
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .player-viewport video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Glassmorphic HUD overlay */
+        .hud-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.6) 100%);
+        }
+
+        .hud-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .hud-badge {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 6px 14px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            backdrop-filter: blur(5px);
+            animation: blink 2s infinite alternate;
+        }
+
+        .hud-telemetry {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hud-dial-box {
+            background: rgba(0, 0, 0, 0.75);
+            border: 1px solid var(--glass-border);
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hud-dial-icon {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #2ec4b6;
+            box-shadow: 0 0 8px #2ec4b6;
+        }
+
+        .hud-dial-icon.pulsing {
+            animation: pulse-green 1s infinite alternate;
+        }
+
+        .hud-dial-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hud-dial-text span:first-child {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hud-dial-text span:last-child {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #2ec4b6;
+        }
+
+        /* Animated HUD Dials on Bottom Left overlay */
+        .hud-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .hud-dials-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hud-circular-dial {
+            width: 70px;
+            height: 70px;
+            position: relative;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            backdrop-filter: blur(5px);
+        }
+
+        .hud-circular-dial svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .hud-circular-dial svg circle {
+            fill: none;
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+
+        .hud-circular-dial svg circle.bg {
+            stroke: rgba(255, 255, 255, 0.05);
+        }
+
+        .hud-circular-dial svg circle.val {
+            stroke: var(--gold);
+            stroke-dasharray: 200;
+            stroke-dashoffset: 80;
+            transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hud-dial-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 2px;
+        }
+
+        .hud-dial-label {
+            font-size: 0.5rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
+        }
+
+        /* Cut Selector Navigation */
+        .cut-selector-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 100%;
+        }
+
+        .cut-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            padding: 16px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .cut-btn::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .cut-btn:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            color: #fff;
+            background: rgba(30, 30, 30, 0.8);
+        }
+
+        .cut-btn.active {
+            border-color: var(--gold);
+            color: #fff;
+            background: rgba(212, 175, 55, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        .cut-btn.active::before {
+            width: 100%;
+        }
+
+        .cut-num {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .cut-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cut-desc {
+            font-size: 0.72rem;
+            color: #888;
+            line-height: 1.3;
+        }
+
+        .cut-btn.active .cut-desc {
+            color: #bbb;
+        }
+
+        /* Bilingual Subtitles Tray */
+        .subtitles-tray {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+        }
+
+        .subtitle-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 10px;
+        }
+
+        .subtitle-header h3 {
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .language-selectors {
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-toggle {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            padding: 4px 10px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 2px;
+        }
+
+        .lang-toggle:hover, .lang-toggle.active {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .subtitle-text-container {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .subtitle-line {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            text-align: center;
+            font-style: italic;
+            transition: all 0.3s ease;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+        }
+
+        /* Sidebar - Specifications & Lead Capture */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Premium Booking Card */
+        .booking-card {
+            background: rgba(15, 15, 15, 0.85);
+            border: 1px solid var(--gold);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 10px var(--gold-glow);
+            padding: 30px;
+            border-radius: 4px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+        }
+
+        .price-badge {
+            background: #c62828;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            padding: 6px 16px;
+            font-size: 1.2rem;
+            transform: rotate(-4deg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            border: 2px solid #fff;
+            align-self: center;
+            margin-top: -15px;
+            letter-spacing: 1px;
+            animation: pulse-sticker 2.5s infinite;
+        }
+
+        .booking-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .booking-subtitle {
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-top: -10px;
+        }
+
+        .booking-details {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 0;
+            text-align: left;
+        }
+
+        .booking-details li {
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            color: #ccc;
+        }
+
+        .booking-details li strong {
+            color: #fff;
+        }
+
+        .whatsapp-cta {
+            background: var(--gold);
+            color: #000;
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            padding: 16px 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212,175,55,0.4);
+            border-radius: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            animation: pulse-button 2s infinite;
+        }
+
+        .whatsapp-cta:hover {
+            background: #fff;
+            box-shadow: 0 6px 25px rgba(255,255,255,0.4);
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-cta svg {
+            fill: currentColor;
+        }
+
+        .lead-footer {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Tech Spec Mini Table */
+        .specs-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 4px;
+            backdrop-filter: blur(15px);
+        }
+
+        .specs-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 8px;
+        }
+
+        .specs-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .spec-item:last-child {
+            border: none;
+            padding-bottom: 0;
+        }
+
+        .spec-label {
+            color: var(--text-muted);
+        }
+
+        .spec-val {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* Campaign Asset Download Center */
+        .campaign-section {
+            grid-column: span 2;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .campaign-title-block {
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 12px;
+        }
+
+        .campaign-title-block h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--gold);
+            letter-spacing: 1.5px;
+        }
+
+        .campaign-title-block p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .asset-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        .asset-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .asset-img-container {
+            width: 100%;
+            aspect-ratio: 16/14;
+            background: #111;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .asset-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .asset-card:hover .asset-img-container img {
+            transform: scale(1.03);
+        }
+
+        .asset-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .asset-name {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .asset-badge {
+            align-self: flex-start;
+            font-size: 0.65rem;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 2px 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .asset-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .asset-download-btn {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--glass-border);
+            padding: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .asset-card:hover .asset-download-btn {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            font-size: 0.7rem;
+            color: #555;
+            background: rgba(10,10,10,0.8);
+            margin-top: 60px;
+        }
+
+        /* Animations */
+        @keyframes blink {
+            0% { opacity: 0.3; box-shadow: 0 0 2px var(--gold-glow); }
+            100% { opacity: 1; box-shadow: 0 0 10px var(--gold-glow); }
+        }
+
+        @keyframes pulse-green {
+            0% { opacity: 0.4; box-shadow: 0 0 4px #2ec4b6; }
+            100% { opacity: 1; box-shadow: 0 0 12px #2ec4b6; }
+        }
+
+        @keyframes pulse-sticker {
+            0% { transform: scale(1) rotate(-4deg); }
+            50% { transform: scale(1.05) rotate(-6deg); }
+            100% { transform: scale(1) rotate(-4deg); }
+        }
+
+        @keyframes pulse-button {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            main {
+                grid-template-columns: 1fr;
+                padding: 20px;
+                gap: 30px;
+            }
+
+            .campaign-section {
+                grid-column: span 1;
+            }
+
+            .assets-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .logo-block h1 {
+                font-size: 1.4rem;
+                letter-spacing: 2px;
+            }
+
+            .nav-actions {
+                gap: 10px;
+            }
+
+            .btn-catalog {
+                padding: 8px 12px;
+                font-size: 0.7rem;
+            }
+
+            .cut-selector-bar {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .cut-btn {
+                padding: 12px;
+            }
+
+            .hud-overlay {
+                padding: 10px;
+            }
+
+            .hud-badge {
+                font-size: 0.65rem;
+                padding: 4px 8px;
+            }
+
+            .hud-dial-box {
+                padding: 6px 8px;
+            }
+
+            .hud-circular-dial {
+                width: 55px;
+                height: 55px;
+            }
+
+            .hud-dial-value {
+                font-size: 0.75rem;
+            }
+
+            .subtitle-line {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header navigation -->
+    <header>
+        <div class="logo-block">
+            <h1>Toyota Yaris</h1>
+            <span>Edition Prestige Hybrid</span>
+        </div>
+        <div class="nav-actions">
+            <a href="index.html" class="btn-catalog">📖 Flipbook Catalog</a>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main>
+        
+        <!-- Left Side: Cinematic Video Ad & Navigation Controls -->
+        <section class="ad-container">
+            
+            <!-- Video viewport -->
+            <div class="player-viewport">
+                <video id="promoVideo" autoplay muted loop playsinline>
+                    <source src="assets/video1.mp4" type="video/mp4">
+                    <source src="assets/video1.webm" type="video/webm">
+                </video>
+
+                <!-- High-End HUD overlay -->
+                <div class="hud-overlay">
+                    <div class="hud-header">
+                        <div class="hud-badge" id="hudStatus">Eco-Luxury Mode</div>
+                        <div class="hud-telemetry">
+                            <div class="hud-dial-box">
+                                <div class="hud-dial-icon pulsing"></div>
+                                <div class="hud-dial-text">
+                                    <span>EV Driving</span>
+                                    <span id="evText">50% Active</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hud-bottom-row">
+                        <div class="hud-dials-container">
+                            
+                            <!-- Speed Dial -->
+                            <div class="hud-circular-dial">
+                                <svg>
+                                    <circle class="bg" cx="35" cy="35" r="30"></circle>
+                                    <circle class="val" id="speedCircle" cx="35" cy="35" r="30" style="stroke-dashoffset: 70;"></circle>
+                                </svg>
+                                <span class="hud-dial-value" id="speedVal">42</span>
+                                <span class="hud-dial-label">km/h</span>
+                            </div>
+
+                            <!-- Charge System Dial -->
+                            <div class="hud-circular-dial">
+                                <svg>
+                                    <circle class="bg" cx="35" cy="35" r="30"></circle>
+                                    <circle class="val" id="chargeCircle" cx="35" cy="35" r="30" style="stroke-dashoffset: 40; stroke: #2ec4b6;"></circle>
+                                </svg>
+                                <span class="hud-dial-value" id="chargeVal">ECO</span>
+                                <span class="hud-dial-label">HSD</span>
+                            </div>
+
+                            <!-- Hybrid Battery Status -->
+                            <div class="hud-circular-dial">
+                                <svg>
+                                    <circle class="bg" cx="35" cy="35" r="30"></circle>
+                                    <circle class="val" id="batteryCircle" cx="35" cy="35" r="30" style="stroke-dashoffset: 60; stroke: #4caf50;"></circle>
+                                </svg>
+                                <span class="hud-dial-value" id="batteryVal">78%</span>
+                                <span class="hud-dial-label">BAT</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad Spot Cut Selector -->
+            <div class="cut-selector-bar">
+                <button class="cut-btn active" onclick="switchVideoCut(1)">
+                    <span class="cut-num">CUT 01 // 🌿 ECO-LUXURY</span>
+                    <span class="cut-title">Corte Éco-Luxe</span>
+                    <span class="cut-desc">Moteur hybride auto-rechargeable, 50% de conduite EV urbaine silencieuse.</span>
+                </button>
+                <button class="cut-btn" onclick="switchVideoCut(2)">
+                    <span class="cut-num">CUT 02 // ⚡ DYNAMIC SPORT</span>
+                    <span class="cut-title">Corte Dynamic</span>
+                    <span class="cut-desc">Châssis TNGA-B, agilité urbaine redéfinie et boîte automatique e-CVT.</span>
+                </button>
+                <button class="cut-btn" onclick="switchVideoCut(3)">
+                    <span class="cut-num">CUT 03 // ✨ PRESTIGE RELAX</span>
+                    <span class="cut-title">Garantie Relax</span>
+                    <span class="cut-desc">10 ans de garantie constructeur transférable, état rigoureusement neuf.</span>
+                </button>
+            </div>
+
+            <!-- Bilingual Caption Overlay Panel -->
+            <div class="subtitles-tray">
+                <div class="subtitle-header">
+                    <h3>Subtitles & Script Narrator</h3>
+                    <div class="language-selectors">
+                        <button class="lang-toggle active" onclick="switchSubtitleLang('FR')">FR</button>
+                        <button class="lang-toggle" onclick="switchSubtitleLang('EN')">EN</button>
+                        <button class="lang-toggle" onclick="switchSubtitleLang('ES')">ES</button>
+                    </div>
+                </div>
+                <div class="subtitle-text-container">
+                    <p class="subtitle-line" id="subtitleLine">"Roulez en toute sérénité au cœur de la ville avec la motorisation hybride 1.5L auto-rechargeable."</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Right Side: Conversion Pricing & Core Specifications -->
+        <aside class="sidebar">
+            
+            <!-- Lead Generation/Booking widget -->
+            <div class="booking-card">
+                <div class="price-badge">22 490 €</div>
+                <h2 class="booking-title">Toyota Yaris</h2>
+                <div class="booking-subtitle">1.5 hybrid style e-cvt</div>
+                
+                <ul class="booking-details">
+                    <li><span>Kilométrage / Mileage</span> <strong>38 494 km</strong></li>
+                    <li><span>Année / Model Year</span> <strong>2023</strong></li>
+                    <li><span>Garantie / Warranty</span> <strong>Toyota Relax (2033)</strong></li>
+                    <li><span>Propriétaire / Owner</span> <strong>1ère Main (1st Owner)</strong></li>
+                    <li><span>État / Condition</span> <strong>Comme Neuf (Like-New)</strong></li>
+                </ul>
+
+                <a href="#" id="whatsappCtaLink" target="_blank" class="whatsapp-cta">
+                    <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.982L2 22l5.202-1.362a9.92 9.92 0 0 0 4.81 1.239h.005c5.507 0 9.99-4.478 9.99-9.985 0-2.667-1.037-5.176-2.923-7.062A9.92 9.92 0 0 0 12.012 2zm5.718 14.156c-.252.712-1.461 1.305-2.013 1.383-.502.072-1.155.132-3.342-.772-2.799-1.158-4.579-4.004-4.72-4.192-.14-.188-1.139-1.516-1.139-2.893 0-1.377.721-2.054.973-2.333.252-.279.55-.349.734-.349.183 0 .367.003.527.01.163.008.385-.062.602.463.224.542.766 1.865.832 1.998.066.133.11.288.022.463-.088.176-.132.288-.264.442-.132.155-.278.347-.396.467-.132.133-.27.279-.117.542.153.262.68 1.121 1.458 1.815.999.892 1.84 1.168 2.102 1.299.262.133.415.11.569-.066.153-.176.656-.763.832-1.02.175-.259.35-.219.59-.131.24.088 1.529.721 1.792.853.262.133.437.2.503.31.066.113.066.652-.186 1.365z"/></svg>
+                    <span>Contact WhatsApp</span>
+                </a>
+                
+                <div class="lead-footer">
+                    *Luxembourg direct sales. Pre-filled context-aware inquiry.
+                </div>
+            </div>
+
+            <!-- Detailed Specifications Table Card -->
+            <div class="specs-card">
+                <h3>Spécifications</h3>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <span class="spec-label">Motorisation</span>
+                        <span class="spec-val">1.5 Hybrid e-CVT</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Puissance</span>
+                        <span class="spec-val">116 ch (85 kW)</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Émissions CO2</span>
+                        <span class="spec-val">87 - 98 g/km</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Consommation</span>
+                        <span class="spec-val">3.8 - 4.3 L/100km</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Transmission</span>
+                        <span class="spec-val">Automatique e-CVT</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Châssis</span>
+                        <span class="spec-val">TNGA-B Agility</span>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- Downward tray: Social Media Campaign Asset Grid -->
+        <section class="campaign-section">
+            <div class="campaign-title-block">
+                <h2>Campaign Promotion Center</h2>
+                <p>Premium generated advertising assets for social networks and dealership boards.</p>
+            </div>
+
+            <div class="assets-grid">
+                
+                <!-- Asset 1: Realistic Sunset Drive Cover -->
+                <div class="asset-card">
+                    <div class="asset-img-container">
+                        <img src="assets/toyota_yaris_ad_cover.png" alt="Toyota Yaris Sunset Luxembourg Ad">
+                    </div>
+                    <div class="asset-info">
+                        <span class="asset-badge">Luxury Editorial</span>
+                        <h4 class="asset-name">Luxembourg City Sunset Spot</h4>
+                        <p class="asset-desc">iPhone-style hyper-realistic shot showcasing wet cobblestone reflections during golden hour in Luxembourg City center.</p>
+                        <a href="assets/toyota_yaris_ad_cover.png" download class="asset-download-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download Asset (PNG)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Asset 2: German Dealership Infographic -->
+                <div class="asset-card">
+                    <div class="asset-img-container">
+                        <img src="assets/toyota_yaris_infographic_ad.png" alt="Toyota Yaris German Infographic Poster">
+                    </div>
+                    <div class="asset-info">
+                        <span class="asset-badge">Dealer Infographic</span>
+                        <h4 class="asset-name">Premium German Infographic Poster</h4>
+                        <p class="asset-desc">Highly detailed promotional dashboard displaying the 22 490 € sale price, key hybrid specifications, and technology indicators.</p>
+                        <a href="assets/toyota_yaris_infographic_ad.png" download class="asset-download-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download Asset (PNG)
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        TOYOTA YARIS HYBRID EXECUTIVE EDITION · Luxembourg Import Dealership Prestige · WhatsApp: +352 621 430 283 · Email: yucolaguilar@gmail.com
+    </footer>
+
+    <!-- Interactive script orchestration -->
+    <script>
+        // Storyboard subtitle texts
+        const captions = {
+            1: {
+                FR: "Roulez en toute sérénité au cœur de la ville avec la motorisation hybride 1.5L auto-rechargeable.",
+                EN: "Drive with absolute peace of mind in the heart of the city with the 1.5L self-charging hybrid engine.",
+                ES: "Conduce con total tranquilidad en el corazón de la ciudad con el motor híbrido autorrecargable de 1.5L."
+            },
+            2: {
+                FR: "Architecture TNGA-B : centre de gravité abaissé pour un plaisir de conduite agile et dynamique en ville.",
+                EN: "TNGA-B architecture: lowered center of gravity for dynamic and agile driving pleasure in the city.",
+                ES: "Arquitectura TNGA-B: centro de gravedad rebajado para un placer de conducción ágil y dinámico en ciudad."
+            },
+            3: {
+                FR: "Tranquillité absolue avec la garantie Toyota Relax prolongée jusqu'en 2033. Première main, carnet complet.",
+                EN: "Total peace of mind with Toyota Relax warranty extended up to 2033. Single owner, full history.",
+                ES: "Tranquilidad absoluta con la garantía Toyota Relax extendida hasta 2033. Único dueño, historial completo."
+            }
+        };
+
+        // Telemetry details mapping per cut
+        const telemetry = {
+            1: {
+                status: "Eco-Luxury Mode",
+                ev: "50% Active",
+                speed: 42,
+                speedOffset: 120, // (200 stroke dash - calculations)
+                charge: "ECO",
+                chargeOffset: 50,
+                battery: "78%",
+                batteryOffset: 44,
+                batteryColor: "#4caf50",
+                evClass: "pulsing"
+            },
+            2: {
+                status: "Dynamic Sport Mode",
+                ev: "Hybrid Boost",
+                speed: 84,
+                speedOffset: 50,
+                charge: "POWER",
+                chargeOffset: 10,
+                battery: "52%",
+                batteryOffset: 96,
+                batteryColor: "#ff9800",
+                evClass: ""
+            },
+            3: {
+                status: "Toyota Relax Mode",
+                ev: "Diagnostics OK",
+                speed: 0,
+                speedOffset: 200,
+                charge: "CHARGE",
+                chargeOffset: 150,
+                battery: "95%",
+                batteryOffset: 10,
+                batteryColor: "#2ec4b6",
+                evClass: "pulsing"
+            }
+        };
+
+        // WhatsApp Custom Messages mapping per active video cut
+        const whatsappMessages = {
+            1: "Bonjour Yusmel ! J'ai vu le spot ÉCO-LUXE de ta Toyota Yaris à 22 490 €. L'économie hybride m'intéresse beaucoup. Est-elle toujours disponible ?",
+            2: "Bonjour Yusmel ! Je viens de regarder le spot DYNAMIC SPORT de la Yaris Hybrid. J'aimerais beaucoup faire un essai routier de ce châssis TNGA-B. Discutons-en !",
+            3: "Bonjour Yusmel ! Je suis très intéressé par la Toyota Yaris et sa garantie Toyota Relax de 10 ans (jusqu'en 2033). Le carnet d'entretien complet est un excellent point. Discutons des détails !"
+        };
+
+        let currentActiveCut = 1;
+        let currentActiveLang = "FR";
+
+        const promoVideo = document.getElementById("promoVideo");
+        const whatsappCtaLink = document.getElementById("whatsappCtaLink");
+
+        function updateWhatsAppLink() {
+            const rawMessage = whatsappMessages[currentActiveCut];
+            const encodedText = encodeURIComponent(rawMessage);
+            whatsappCtaLink.href = `https://wa.me/352621430283?text=${encodedText}`;
+        }
+
+        function switchSubtitleLang(lang) {
+            currentActiveLang = lang;
+            
+            // Toggle active classes on lang selector buttons
+            document.querySelectorAll(".lang-toggle").forEach(btn => {
+                btn.classList.toggle("active", btn.textContent === lang);
+            });
+
+            // Update subtitle texts
+            const subtitleLine = document.getElementById("subtitleLine");
+            subtitleLine.style.opacity = 0;
+            setTimeout(() => {
+                subtitleLine.textContent = `"${captions[currentActiveCut][lang]}"`;
+                subtitleLine.style.opacity = 1;
+            }, 200);
+        }
+
+        function switchVideoCut(cutNumber) {
+            if (currentActiveCut === cutNumber) return;
+            currentActiveCut = cutNumber;
+
+            // Update active cut selectors
+            const buttons = document.querySelectorAll(".cut-btn");
+            buttons.forEach((btn, index) => {
+                btn.classList.toggle("active", (index + 1) === cutNumber);
+            });
+
+            // Transition video source smoothly
+            promoVideo.style.opacity = 0.3;
+            
+            setTimeout(() => {
+                const videoSource = cutNumber === 3 ? "assets/video3.mp4" : (cutNumber === 2 ? "assets/video2.mp4" : "assets/video1.mp4");
+                const webmSource = cutNumber === 3 ? "assets/video3.webm" : (cutNumber === 2 ? "assets/video2.webm" : "assets/video1.webm");
+                
+                promoVideo.innerHTML = `
+                    <source src="${videoSource}" type="video/mp4">
+                    <source src="${webmSource}" type="video/webm">
+                `;
+                promoVideo.load();
+                promoVideo.play().catch(e => console.log("Autoplay blocked by browser."));
+                promoVideo.style.opacity = 1;
+            }, 300);
+
+            // Update subtitles & scripts instantly
+            switchSubtitleLang(currentActiveLang);
+
+            // Update dynamic HUD telemetry dials
+            const data = telemetry[cutNumber];
+            document.getElementById("hudStatus").textContent = data.status;
+            document.getElementById("evText").textContent = data.ev;
+            
+            const evIndicator = document.querySelector(".hud-dial-icon");
+            evIndicator.className = "hud-dial-icon " + data.evClass;
+
+            // Speed Telemetry updates
+            document.getElementById("speedVal").textContent = data.speed;
+            document.getElementById("speedCircle").style.strokeDashoffset = data.speedOffset;
+
+            // HSD Telemetry updates
+            document.getElementById("chargeVal").textContent = data.charge;
+            document.getElementById("chargeCircle").style.strokeDashoffset = data.chargeOffset;
+
+            // Battery Telemetry updates
+            document.getElementById("batteryVal").textContent = data.battery;
+            document.getElementById("batteryCircle").style.strokeDashoffset = data.batteryOffset;
+            document.getElementById("batteryCircle").style.stroke = data.batteryColor;
+
+            // Update WhatsApp CTA parameters
+            updateWhatsAppLink();
+        }
+
+        // Initialize links on DOM Ready
+        updateWhatsAppLink();
+    </script>
+</body>
+</html>
